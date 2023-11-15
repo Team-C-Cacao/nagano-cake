@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row mb-5">
     <div class="col-12">
-   <h4><strong>新規会員登録</strong></h4>
+   <h4 class="mb-5"><strong>新規会員登録</strong></h4>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
   <%= render "public/shared/error_messages", resource: resource %>
@@ -21,42 +21,42 @@
     <%= f.label :last_name_kana,"(セイ)" %>
     <%= f.text_field :last_name_kana,class: "col-3 col-form-label" %>
 
-    <%= f.label :first_name_kana,"(メイ)",class: "ml-3 mr-2" %>
+    <%= f.label :first_name_kana,"(メイ)",class: "ml-4" %>
     <%= f.text_field :first_name_kana,class: "col-3 col-form-label" %>
   </div>
 
-  <div class="field form-group">
-    <%= f.label :email,"メールアドレス" %>
-    <%= f.email_field :email, autocomplete: "email" %>
+  <div class="field form-group row" >
+    <div class="col-3"><%= f.label :email,"メールアドレス" %></div>
+    <%= f.email_field :email, autocomplete: "email",class: "col-3 col-form-label ml-4" %>
   </div>
 
-  <div class="field form-group">
-    <%= f.label :postal_code,"郵便番号(ハイフンなし)" %>
-    <%= f.text_field :postal_code %>
+  <div class="field form-group row">
+    <div class="col-3"><%= f.label :postal_code,"郵便番号(ハイフンなし)" %></div>
+    <%= f.text_field :postal_code,class: "col-3 col-form-label ml-4" %>
   </div>
 
-  <div class="field form-group">
-    <%= f.label :address,"住所" %>
-    <%= f.text_field :address,size: "50" %>
+  <div class="field form-group row">
+    <div class="col-3"><%= f.label :address,"住所" %></div>
+    <%= f.text_field :address,size: "50",class: "col-3 col-form-label ml-4" %>
   </div>
 
-  <div class="field form-group">
-    <%= f.label :phone_number,"電話番号" %>
-    <%= f.text_field :phone_number %>
+  <div class="field form-group row">
+    <div class="col-3"><%= f.label :phone_number,"電話番号" %></div>
+    <%= f.text_field :phone_number,class: "col-3 col-form-label ml-4" %>
   </div>
 
-  <div class="field form-group">
-    <%= f.label :password,"パスワード(6文字以上)" %>
-    <%= f.password_field :password, autocomplete: "new-password" %>
+  <div class="field form-group row">
+    <div class="col-3"><%= f.label :password,"パスワード(6文字以上)" %></div>
+    <%= f.password_field :password, autocomplete: "new-password",class: "col-3 col-form-label ml-4" %>
   </div>
 
-  <div class="field form-group">
-    <%= f.label :password_confirmation,"パスワード(確認用)" %>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <div class="field form-group row">
+    <div class="col-3"><%= f.label :password_confirmation,"パスワード(確認用)" %></div>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password",class: "col-3 col-form-label ml-4" %>
   </div>
 
   <div class="actions form-group">
-    <%= f.submit "新規登録",class: "btn btn-success mb-3" %>
+    <%= f.submit "新規登録",class: "btn btn-success d-grid gap-2 col-6 mx-auto mb-3" %>
   </div>
 <% end %>
 <h5><strong>既に登録済みの方</strong></h5>
