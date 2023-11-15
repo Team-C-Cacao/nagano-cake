@@ -1,2 +1,18 @@
-<h1>Public::Items#index</h1>
-<p>Find me in app/views/public/items/index.html.erb</p>
+<div class="container px-5 px-sm-0">
+  <div class="row justify-content-center">
+    <div class="col-md-8 mt-4">
+      <h2>商品一覧</h2>
+        <div class="items">
+            <% @items.each do |item| %>
+              <div class="item_image m-4">
+                <%= link_to item_path(item.id) do %>
+                  <%= image_tag item.image, size: "150x110" %><br>
+                  <%= item.name %><br>
+                  <%= item.excluding_tax_price %><br>
+                <% end %>
+              </div>
+            <% end %>
+        </div>
+    </div>
+  </div>
+</div>

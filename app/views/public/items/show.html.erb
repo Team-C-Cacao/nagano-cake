@@ -1,2 +1,18 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<div class="container px-5 px-sm-0">
+  <div class="row justify-content-center">
+    <div class="col-md-8 mt-4">
+        <div class="items">
+            <%= image_tag item.image, size: "150x110" %><br>
+            <%= item.name %><br>
+            <%= item.description %><br>
+            ¥<%= item.excluding_tax_price %>(税込)<br>
+            <!--下記個数選択ボタン作成中。カラム名自信なし-->
+            <!--個数制限は1〜20の予定だが、amountはcart_itemsモデルのカラムのため、varidation設定はそちらになる？-->
+            <%= f.select :cart_items.amount, ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"] %>
+            <%= link_to cart_items_path do %>
+              <button type="button" class="btn btn-success">カートへ入れる</button>
+            <% end %>
+        </div>
+    </div>
+  </div>
+</div>
