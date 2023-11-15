@@ -1,0 +1,12 @@
+// 変数のカスタマイズ
+$primary: #007bbb;
+$secondary: #941f57;
+$success: #c3d825;
+$danger: #d7003a;
+$warning: #fcc500;
+$info: #2cd4ab;
+$light: #ffffff;
+$dark: #4e454a;
+
+// SCSSをインポート
+@import '~bootstrap/scss/bootstrap';
