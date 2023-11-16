@@ -1,0 +1,22 @@
+<header class="py-2">
+	<div class="navbar header-group mx-5">
+		<a href="#"><img class="logo" src="/assets/logo.png" alt="ロゴ"></a>
+		<div class="menu-box">
+			<span class="list-bar"></span>
+			<span class="list-bar"></span>
+			<span class="list-bar"></span>
+		</div>
+		<nav class="ml-auto">
+			<ul class="nav mb-3">
+        <%= link_to 'Home', root_path, class: "btn btn-warning mr-4" %>
+        <%= link_to '商品一覧', root_path, class: "btn btn-warning mr-4" %>
+        <%= link_to '新規登録', root_path, class: "btn btn-warning mr-4" %>
+        <%= link_to 'ログイン', root_path, class: "btn btn-warning mr-4" %>
+			</ul>
+		  <form class="search-box form-group ml-auto" role="search" method="get"  action="#">
+		   <input class="text search-text form-control"  type="search" placeholder="Search">
+		   <input class="fas fa-search fa-1x" type="submit"  value="&#xf002;">
+		 </form>
+		</nav>
+	</div>
+</header>
