@@ -4,6 +4,8 @@ class Item < ApplicationRecord
   has_many :oder_details
   belongs_to :genre
 
+  has_one_attached :image
+
   def get_item_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')

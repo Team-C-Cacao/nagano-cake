@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-8 mx-auto mt-5">
       <h2 class="d-flex fustify-content-start mb-5">商品編集</h2>
-      <%= form_with model: @item, html: {class: 'form-horizontal'} do |f| %>
+      <%= form_with model: @item, url: admin_items_path, html: {class: 'form-horizontal'} do |f| %>
         <div class="form-group row">
           <div class="col-3">
             <%= f.label :image, "商品画像" %>
@@ -48,8 +48,8 @@
             <%= f.label :status, "販売ステータス" %>
           </div>
           <div class="col-9">
-            <%= f.radio_button :status, true, class: "販売中" %>　販売中
-            <%= f.radio_button :status, false, class: "販売停止中" %>　販売停止中
+            <%= f.radio_button :is_active, true, class: "販売中" %>　販売中
+            <%= f.radio_button :is_active, false, class: "販売停止中" %>　販売停止中
           </div>
         </div>
         <div class="form-group row">
