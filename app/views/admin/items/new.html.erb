@@ -1,2 +1,37 @@
-<h1>Admin::Items#new</h1>
-<p>Find me in app/views/admin/items/new.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-10">
+      <h2>商品新規登録</h2>
+      <%= form_with model: @item, html: {class: 'form-horizontal'} do |f| %>
+        <div class="form-group">
+          <%= f.label :image, "商品画像" %>
+          <%= f.file_field :image, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :name, "商品名" %>
+          <%= f.text_field :name, placeholder: "商品名", class: "form-controll" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :description, "商品説明" %>
+          <%= f.text_area :descroption, rows: 5, placeholder: "商品名", class: "form-controll" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :genre_id, "ジャンル" %>
+          <%= f.collection_select :genre_id, @genres, :id, :name, { prompt: "選択してください" }, { class: "form-controll" } %>
+        </div>
+        <div class="form-group">
+          <%= f.label :excluding_tax_price, "税抜価格" %>
+          <%= f.number_field :excluding_tax_price, placeholder: "1000", class: "form-controll" %>円
+        </div>
+        <div class="form-group">
+          <%= f.label :status, "販売ステータス" %>
+          <%= f.radio_button :status, true, class: "販売中" %>　販売中
+          <%= f.radio_button :status, false, class: "販売停止中" %>　販売停止中
+        </div>
+        <div class="form-group">
+          <%= f.submit "新規登録", class: "btn btn-success" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
