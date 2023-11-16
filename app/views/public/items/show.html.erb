@@ -2,13 +2,26 @@
   <div class="row justify-content-center">
     <div class="col-md-8 mt-4">
         <div class="items">
-            <%= image_tag item.image, size: "150x110" %><br>
-            <%= item.name %><br>
-            <%= item.description %><br>
-            ¥<%= item.excluding_tax_price %>(税込)<br>
+            <%= image_tag @item.get_item_image(150,110) %><br>
+            <%= @item.name %><br>
+            <%= @item.description %><br>
+            ¥<%= @item.excluding_tax_price %>(税込)<br>
             <!--下記個数選択ボタン作成中。カラム名自信なし-->
             <!--個数制限は1〜20の予定だが、amountはcart_itemsモデルのカラムのため、varidation設定はそちらになる？-->
+            
+            <%= form_with(model: user, local: true) do |f| %>
+              <div class="form-group">
+                <%= f.label :sex, '性別' %>
+                <%= f.select :sex, {'男性': 1, '女性': 2}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
+              </div>
+            
+              <div class="form-group">
+                <%= f.submit '送信', class: 'btn btn-primary btn-block' %>
+              </div>
+            <% end %>
+            
             <%= f.select :cart_items.amount, ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"] %>
+           
             <%= link_to cart_items_path do %>
               <button type="button" class="btn btn-success">カートへ入れる</button>
             <% end %>
