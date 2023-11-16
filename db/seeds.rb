@@ -15,8 +15,7 @@
       address: "カカオ町#{n + 1}",
       phone_number: "000000#{n + 1}",
       email: "test#{n + 1}@test.com",
-      password: "123456",
-      is_active: true,
+      password: "123456"
       )
   end
 
