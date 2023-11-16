@@ -4,6 +4,7 @@ class Item < ApplicationRecord
   has_many :oder_details
   belongs_to :genre
 
+
   has_one_attached :image
 
   def get_item_image(width, height)
@@ -13,5 +14,6 @@ class Item < ApplicationRecord
     end
     image.variant(resize_to_fill: [width, height]).processed
   end
+
 
 end
