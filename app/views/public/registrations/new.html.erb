@@ -7,53 +7,72 @@
   <%= render "public/shared/error_messages", resource: resource %>
   <!--form_withにする-->
 
-  <div class="field form-group row">
-    <div class="col-3">名前</div>
-    <%= f.label :last_name,"(姓)" %>
-    <%= f.text_field :last_name, autofocus: true,class: "col-3 col-form-label" %>
+  <div class="form-row">
 
-    <%= f.label :first_name,"(名)",class: "ml-5 mr-2" %>
-    <%= f.text_field :first_name,class: "col-3 col-form-label" %>
+    <span class="form-group col-3">名前</span>
+    <div class="form-group col-3">
+      <label for="last_name">(姓)</label>
+      <%= f.text_field :last_name, class: "form-control"%>
+    </div>
+    <div class="form-group col-3">
+      <label for="first_name">(名)</label>
+      <%= f.text_field :first_name, class: "form-control"%>
+    </div>
   </div>
 
-  <div class="field form-group row">
-    <div class="col-3">フリガナ</div>
-    <%= f.label :last_name_kana,"(セイ)" %>
-    <span></span>
-    <%= f.text_field :last_name_kana,class: "col-3 col-form-label" %>
-
-    <%= f.label :first_name_kana,"(メイ)",class: "ml-4" %>
-    <%= f.text_field :first_name_kana,class: "col-3 col-form-label" %>
+  <div class="form-row">
+    <span class="form-group col-3">フリガナ</span>
+    <div class="form-group col-3">
+      <label for="last_name_kana">(セイ)</label>
+      <%= f.text_field :last_name_kana, class: "form-control"%>
+    </div>
+    <div class="form-group col-md-3">
+      <label for="first_name_kana">(メイ)</label>
+      <%= f.text_field :first_name_kana, class: "form-control"%>
+    </div>
   </div>
 
-  <div class="field form-group row" >
-    <div class="col-3"><%= f.label :email,"メールアドレス" %></div>
-    <%= f.email_field :email, autocomplete: "email",class: "col-3 col-form-label ml-4" %>
+  <div class="form-row">
+    <span class="form-group col-3">メールアドレス</span>
+    <div class="form-group col-3">
+      <%= f.text_field :email, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field form-group row">
-    <div class="col-3"><%= f.label :postal_code,"郵便番号(ハイフンなし)" %></div>
-    <%= f.text_field :postal_code,class: "col-3 col-form-label ml-4" %>
+  <div class="form-row">
+    <span class="form-group col-3">郵便番号(ハイフンなし)</span>
+    <div class="form-group col-3">
+     <%= f.text_field :postal_code, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field form-group row">
-    <div class="col-3"><%= f.label :address,"住所" %></div>
-    <%= f.text_field :address,size: "50",class: "col-7 col-form-label ml-3" %>
+  <div class="form-row">
+    <span class="form-group col-3">住所</span>
+    <div class="form-group col-6">
+     <%= f.text_field :address, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field form-group row">
-    <div class="col-3"><%= f.label :phone_number,"電話番号" %></div>
-    <%= f.text_field :phone_number,class: "col-3 col-form-label ml-4" %>
+
+  <div class="form-row">
+    <span class="form-group col-3">電話番号</span>
+    <div class="form-group col-3">
+     <%= f.text_field :phone_number, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field form-group row">
-    <div class="col-3"><%= f.label :password,"パスワード(6文字以上)" %></div>
-    <%= f.password_field :password, autocomplete: "new-password",class: "col-3 col-form-label ml-4" %>
+  <div class="form-row">
+    <span class="form-group col-3">パスワード(6文字以上)</span>
+    <div class="form-group col-3">
+     <%= f.password_field :password, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field form-group row">
-    <div class="col-3"><%= f.label :password_confirmation,"パスワード(確認用)" %></div>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password",class: "col-3 col-form-label ml-4" %>
+  <div class="form-row">
+    <span class="form-group col-3">パスワード(確認用)</span>
+    <div class="form-group col-3">
+     <%= f.password_field :password_confirmation, class: "form-control" %>
+    </div>
   </div>
 
   <div class="actions form-group justify-content:center; d-flex">
@@ -63,6 +82,9 @@
 <h5><strong>既に登録済みの方</strong></h5>
 
 <%= render "public/shared/links" %>
+
   </div>
  </div>
 </div>
+
+
