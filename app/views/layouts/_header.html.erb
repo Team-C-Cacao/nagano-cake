@@ -1,22 +1,27 @@
-<header class="py-2">
-	<div class="navbar header-group mx-5">
-		<a href="#"><img class="logo" src="/assets/logo.png" alt="ロゴ"></a>
-		<div class="menu-box">
-			<span class="list-bar"></span>
-			<span class="list-bar"></span>
-			<span class="list-bar"></span>
-		</div>
-		<nav class="ml-auto">
-			<ul class="nav mb-3">
-        <%= link_to 'Home', root_path, class: "btn btn-warning mr-4" %>
-        <%= link_to '商品一覧', root_path, class: "btn btn-warning mr-4" %>
-        <%= link_to '新規登録', root_path, class: "btn btn-warning mr-4" %>
-        <%= link_to 'ログイン', root_path, class: "btn btn-warning mr-4" %>
-			</ul>
-		  <form class="search-box form-group ml-auto" role="search" method="get"  action="#">
-		   <input class="text search-text form-control"  type="search" placeholder="Search">
-		   <input class="fas fa-search fa-1x" type="submit"  value="&#xf002;">
-		 </form>
-		</nav>
-	</div>
-</header>
+<nav class="navbar navbar-expand-lg">
+  <a class="navbar-brand ml-4" href="/"><img class="logo" src="/assets/nagano-cake" height="80" alt="ロゴ"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav ml-auto row">
+    	<% if admin_signed_in? %>
+    		<%= link_to '商品一覧', admin_items_path, class: "btn btn-warning mr-4" %>
+    		<%= link_to '会員一覧', admin_customers_path, class: "btn btn-warning mr-4" %>
+    		<%= link_to '注文履歴一覧', admin_root_path, class: "btn btn-warning mr-4" %>
+    		<%= link_to 'ジャンル一覧', admin_genres_path, class: "btn btn-warning mr-4" %>
+    		<%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "btn btn-warning mr-4" %>
+    	<% elsif customer_signed_in? %>
+    		<%= link_to 'マイページ', customers_path, class: "btn btn-warning mr-4" %>
+    		<%= link_to '商品一覧', items_path, class: "btn btn-warning mr-4" %>
+    		<%= link_to 'カート', cart_items_path, class: "btn btn-warning mr-4" %>
+    		<%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class: "btn btn-warning mr-4" %>
+    	<% else %>
+	   		<%= link_to 'About', about_path, class: "btn btn-warning mr-4" %>
+	      <%= link_to '商品一覧', items_path, class: "btn btn-warning mr-4" %>
+	      <%= link_to '新規登録', new_customer_registration_path, class: "btn btn-warning mr-4" %>
+	      <%= link_to 'ログイン', new_customer_session_path, class: "btn btn-warning mr-4" %>
+	    <% end %>
+    </div>
+  </div>
+</nav>
