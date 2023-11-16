@@ -1,30 +1,25 @@
-<div class="container">
-    <div class="row">
-      <div class="mx-auto col-10">
-        <h2 class="justify-content-start d-flex">管理者ログイン</h2>
-          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <!--form_withに直す-->
+<div class="container my-3">
+  <div class="row">
+      <div class="col-6 offset-3">
+        <h3>管理者ログイン</h3>
 
-            <div class="field form-group row">
-              <%= f.label :"メールアドレス", class: "col-form-label col-4" %>
-              <div class="col-8">
-              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
-              </div>
-            </div>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-              <div class="field form-group row">
-                <%= f.label :"パスワード", class: "control-label col-4" %>
-                <div class="col-md-8">
-                <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
-                </div>
-              </div>
+          <div class="field">
+            <%= f.label :"メールアドレス",class:"form-label"%><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"form-control" %>
+          </div>
 
-            <div class="actions col-6">
-              <%= f.submit "Log in",class: "btn btn-sm btn-primary" %>
-            </div>
-          <% end %>
+          <div class="field">
+            <%= f.label :"パスワード",class:"form-label mt-3"%><br />
+            <%= f.password_field :password, autocomplete: "current-password",class:"form-control" %>
+          </div>
 
-        <%= render "admin/shared/links" %>
+          <div class="actions text-center">
+            <%= f.submit "Log in",class:"btn btn-primary mt-3" %>
+          </div>
+        <% end %>
+
       </div>
     </div>
   </div>
