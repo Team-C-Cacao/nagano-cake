@@ -36,7 +36,10 @@
             <p>税込価格<br>(税抜価格)</p>
           </div>
           <div class="col-6 offset-1">
-            ここ保留
+            <!--現在の税率10%を適用中-->
+            <% tax_rate = 0.1 %>
+            <%= number_to_currency(display_including_tax_price(@item.excluding_tax_price, tax_rate), delimiter: ',', unit: '', precision: 0 ) %>
+            (<%= number_to_currency(@item.excluding_tax_price, delimiter: ',', unit: '', precision: 0 ) %>) 円
           </div>
         </div>
         <div class="form-group row">
