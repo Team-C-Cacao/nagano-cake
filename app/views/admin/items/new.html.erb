@@ -1,2 +1,63 @@
-<h1>Admin::Items#new</h1>
-<p>Find me in app/views/admin/items/new.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-8 mx-auto mt-5">
+      <h2 class="d-flex fustify-content-start mb-5">商品新規登録</h2>
+      <%= form_with model: @item, url: admin_items_path, html: {class: 'form-horizontal'} do |f| %>
+        <div class="form-group row">
+          <div class="col-3">
+            <%= f.label :image, "商品画像" %>
+          </div>
+          <div class="col-9">
+            <%= f.file_field :image, accept: "image/*" %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-3">
+            <%= f.label :name, "商品名" %>
+          </div>
+          <div class="col-9">
+            <%= f.text_field :name, placeholder: "商品名", class: "form-controll w-100" %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-3">
+            <%= f.label :description, "商品説明" %>
+          </div>
+          <div class="col-9">
+            <%= f.text_area :description, rows: 5, placeholder: "商品説明", class: "form-controll w-100" %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-3">
+            <%= f.label :genre_id, "ジャンル" %>
+          </div>
+          <div class="col-9">
+            <%= f.collection_select :genre_id, @genres, :id, :name, { prompt: "選択してください" }, { class: "form-controll w-100" } %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-3">
+            <%= f.label :excluding_tax_price, "税抜価格" %>
+          </div>
+          <div class="col-9">
+            <%= f.number_field :excluding_tax_price, placeholder: "1000", class: "form-controll w-100" %> 円
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-3">
+            <%= f.label :status, "販売ステータス" %>
+          </div>
+          <div class="col-9">
+            <%= f.radio_button :is_active, true, class: "販売中" %>　販売中
+            <%= f.radio_button :is_active, false, class: "販売停止中" %>　販売停止中
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-12">
+            <%= f.submit "新規登録", class: "btn btn-success" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
