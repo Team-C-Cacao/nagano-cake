@@ -14,12 +14,27 @@ $dark: #4e454a;
 // 普通の記述
 body {
   background-color: #eee9e6;
+  height: 100%;
 }
+
+html {
+  height: 100%;
+}
+
 .navbar {
   background-color: #583822;
 }
 
-.footer {
+#page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+#content-wrap {
+  flex: 1;
+}
+
+#footer {
   background-color: #d8a373;
   text-align: center;
   color: #fff;
