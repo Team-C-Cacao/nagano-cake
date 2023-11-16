@@ -1,2 +1,58 @@
-<h1>Admin::Items#show</h1>
-<p>Find me in app/views/admin/items/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-10 mx-auto mt-5">
+      <h2>商品詳細</h2>
+      <div class="row mx-auto mt-5">
+        <div class="col-3">
+          <%= image_tag @item.get_item_image(200,200) %>
+        </div>
+        <div class="col-7 offset-1">
+          <div class="form-group row">
+          <div class="col-4">
+            <p>商品名</p>
+          </div>
+          <div class="col-6 offset-1">
+            <%= @item.name %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-4">
+            <p>商品説明</p>
+          </div>
+          <div class="col-6 offset-1">
+            <%= @item.description %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-4">
+            <p>ジャンル</p>
+          </div>
+          <div class="col-6 offset-1">
+            <%= @item.genre.name %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-4">
+            <p>税込価格<br>(税抜価格)</p>
+          </div>
+          <div class="col-6 offset-1">
+            <!--現在の税率10%を適用中-->
+            <% tax_rate = 0.1 %>
+            <%= number_to_currency(display_including_tax_price(@item.excluding_tax_price, tax_rate), delimiter: ',', unit: '', precision: 0 ) %>
+            (<%= number_to_currency(@item.excluding_tax_price, delimiter: ',', unit: '', precision: 0 ) %>) 円
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-4">
+            <p>販売ステータス</p>
+          </div>
+          <div class="col-6 offset-1">
+            <%= @item.is_active ? "販売中" : "販売停止中" %>
+          </div>
+        </div>
+        <%= link_to "編集する", edit_admin_item_path(@item), class: "btn btn-success btn-lg mt-3" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
