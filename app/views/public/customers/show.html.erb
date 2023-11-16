@@ -1,2 +1,35 @@
-<h1>Public::Customers#show</h1>
-<p>Find me in app/views/public/customers/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h4 class="mt-4 mb-5">マイページ</h4>
+      <h4 class="mb-4"><strong>登録情報</strong><%= link_to "編集する",edit_customers_path %></h4>
+
+      <div class="form-row">
+        <div class="col-3 p-2 border border-dark bg-warning">氏名</div>
+        <div class="col-7 p-2 border border-dark bg-white"><%= @customer.last_name + "　" + @customer.first_name %></div>
+      </div>
+
+      <div class="form-row">
+        <div class="col-3 p-2 border border-dark bg-warning">カナ</div>
+        <div class="col-7 p-2 border border-dark bg-white"><%= @customer.last_name_kana + "　" + @customer.first_name_kana %></div>
+      </div>
+
+      <div class="form-row">
+        <div class="col-3 p-2 border border-dark bg-warning">郵便番号</div>
+        <div class="col-7 p-2 border border-dark bg-white"><%= @customer.postal_code %></div>
+      </div>
+      <div class="form-row">
+        <div class="col-3 p-2 border border-dark bg-warning">住所</div>
+        <div class="col-7 p-2 border border-dark bg-white"><%= @customer.address %></div>
+      </div>
+
+      <div class="form-row mb-4">
+        <div class="col-3 p-2 border border-dark bg-warning">メールアドレス</div>
+        <div class="col-7 p-2 border border-dark bg-white"><%= @customer.email %></div>
+      </div>
+      <h4><strong>配送先</strong><%= link_to "一覧を見る",shipping_addresses_path %></h4>
+      <h4><strong>注文履歴</strong><%= link_to "一覧を見る",orders_path %></h4>
+
+    </div>
+  </div>
+</div>
