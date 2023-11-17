@@ -14,7 +14,12 @@ class Public::CustomersController < ApplicationController
   end
 
   def check
-    
+  end
+
+  def cancellation
+    @customer = current_customer
+    @customer.update(is_active: false)
+    redirect_to root_path
   end
 
   private
