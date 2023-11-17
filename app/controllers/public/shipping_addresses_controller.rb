@@ -3,12 +3,12 @@ class Public::ShippingAddressesController < ApplicationController
     @shipping_addresses = ShippingAddress.all
     @shipping_address = ShippingAddress.new
   end
-  
+
   def create
       @shipping_address = ShippingAddress.new(shipping_addresses_params)
       @shipping_address.customer_id = current_customer.id
       if @shipping_address.save
-        redirect_to 'shipping_addresses', notice: "新規配送先を登録しました。" 
+        redirect_to request.referer, notice: "新規配送先を登録しました。"
       else
         @shipping_address = ShippingAddress.all
         render 'index'
@@ -16,19 +16,19 @@ class Public::ShippingAddressesController < ApplicationController
     end
 
   def destroy
-    @shipping_address= ShippingAddress.find(params[:id])
-    @shipping_address= current_customer.shippingaddress
+    @shipping_address = ShippingAddress.find(params[:id])
+    @shipping_address.destroy
     flash.now[:alert] = "配送先を削除しました"
     redirect_to shipping_addresses_path
   end
-  
+
   def edit
     @shipping_address = ShippingAddress.find(params[:id])
   end
-  
-  
+
+
   def update
-    @shipping_address = ShippingAddresses.find(params[:id])
+    @shipping_address = ShippingAddress.find(params[:id])
     if @shipping_address.update(shipping_addresses_params)
       redirect_to shipping_addresses_path, notice: "配達先を変更しました。"
     else

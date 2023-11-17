@@ -37,17 +37,17 @@
             <th>宛名</th>
             <th colspan="2"><br></br></th>
           </tr>
-      
-          <tr>
-            <% @shipping_addresses.each do |shipping_address| %>
-            <td><%= shipping_address.postal_code %></td>
-            <td><%= shipping_address.shipping_addresses %></td>
-            <td><%= shipping_address.name %></td>
-            <td><%= link_to '削除する', @shipping_addresses, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{@shipping_addresses.id}" %>   
-                <%= link_to "編集する",edit_shipping_addresses_path(shipping_addresses), class: "btn-sm btn-primary" %></td>
-            <% end %>
-          </tr>
-          
+          <% @shipping_addresses.each do |shipping_address| %>
+            <tr>
+              <td><%= shipping_address.postal_code %></td>
+              <td><%= shipping_address.shipping_addresses %></td>
+              <td><%= shipping_address.name %></td>
+               <td>
+                <%= link_to '削除する', shipping_address, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{shipping_address.id}" %>
+                <%= link_to "編集する", edit_shipping_address_path(shipping_address), class: "btn btn-sm btn-primary" %>
+              </td>
+            </tr>
+          <% end %>
         </thead>
       </table>
     </div>
