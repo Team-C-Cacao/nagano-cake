@@ -24,7 +24,9 @@ Rails.application.routes.draw do
     resources :shipping_addresses, except: [:new, :show]
     resources :orders, only: [:new, :create, :index, :show, :confirm, :complete]
     resources :cart_items, only: [:index, :update, :create, :destroy, :destroy_all]
-    resource :customers, only: [:show, :edit, :update, :check, :cancellation]
+    resource :customers, only: [:show, :edit, :update], path: 'customer'
+    get "customers/check"=>"customers#check",as: 'check'
+    patch "customers/cancellation"=>"customers#cancellation",as: "cancellation"
     resources :items, only: [:index, :show]
   end
 
