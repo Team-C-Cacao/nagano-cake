@@ -19,7 +19,8 @@ class Public::CustomersController < ApplicationController
   def cancellation
     @customer = current_customer
     @customer.update(is_active: false)
-    redirect_to root_path
+    sign_out(@customer)
+    redirect_to root_path,notice: "退会が完了しました。"
   end
 
   private
