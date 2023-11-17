@@ -32,3 +32,8 @@
       excluding_tax_price: 2000
       )
   end
+
+  Admin.create!(
+    email: "admin@admin.com",
+    password: "123456"
+  )
