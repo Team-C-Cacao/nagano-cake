@@ -26,6 +26,27 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+      models:
+        customer:
+          attributes:
+            email:
+              blank: "メールアドレスを入力してください"
+            password:
+              blank: "パスワードを入力してください"
+            last_name:
+              blank: "姓を入力してください"
+            first_name:
+              blank: "名を入力してください"
+            last_name_kana:
+              blank: "セイを入力してください"
+            first_name_kana:
+              blank: "メイを入力してください"
+            postal_code:
+              blank: "郵便番号を入力してください"
+            address:
+              blank: "住所を入力してください"
+            phone_number:
+              blank: "電話番号を入力してください"
 
   date:
     abbr_day_names:
@@ -103,10 +124,9 @@ ja:
       month: 月
       year: 年
   errors:
-    format: "%{attribute}%{message}"
+    format: "%{message}"
     messages:
       accepted: を受諾してください
-      blank: を入力してください
       confirmation: と%{attribute}の入力が一致しません
       empty: を入力してください
       equal_to: は%{count}にしてください
