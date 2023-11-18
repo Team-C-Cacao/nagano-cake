@@ -12,12 +12,14 @@ $dark: #4e454a;
 @import '~bootstrap/scss/bootstrap';
 
 // 普通の記述
-body {
-  background-color: #eee9e6;
+html {
   height: 100%;
 }
 
-html {
+body {
+  background-color: #eee9e6;
+  margin: 0;
+  padding: 0;
   height: 100%;
 }
 
@@ -25,21 +27,10 @@ html {
   background-color: #583822;
 }
 
-#page-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
-}
-#content-wrap {
-  flex: 1;
-}
-
 #footer {
   background-color: #d8a373;
-  text-align: center;
-  color: #fff;
-  height: 80px;
+  position: sticky;
+  top: 100vh;
   width: 100%;
-  position: fixed;
-  bottom: 0;
+  height: 80px;
 }
