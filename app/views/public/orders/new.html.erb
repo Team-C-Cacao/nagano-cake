@@ -41,21 +41,21 @@
                 <div class="form-row">
                   <div class="col-md-6 mb-3">
                      <label class="col-form-label">郵便番号(ハイフンなし)</label>
-                     <input class="form-control" placeholder="0000000">
+                     <%= f.text_field :new_post_code, class:"form-control", placeholder:"0000000" %>
                   </div>
                 </div>
 
                 <div class="form-row">
                   <div class="col-md-10 mb-3">
                      <label class="col-form-label">住所</label>
-                     <input class="form-control" placeholder="東京都渋谷区代々木神園町0-0">
+                     <%= f.text_field :new_address, class:"form-control", placeholder:"東京都渋谷区代々木神園町0-0" %>
                   </div>
                 </div>
 
                 <div class="form-row">
                   <div class="col-md-6 mb-3">
-                     <label class="col-form-label">宛名</label>
-                     <input class="form-control" placeholder="令和道子">
+                     <td><label class="col-form-label">宛名</label></td>
+                     <td><%= f.text_field :new_name, class:"form-control", placeholder:"令和道子" %></td>
                   </div>
                 </div>
             </div>
@@ -65,7 +65,7 @@
               <div class="col-md-6">
                 <%= link_to confirm_orders_path do %>
                   <%= f.submit "確認画面へ進む", class: "btn btn-info" %>
-                <% end 
+                <% end %>
               </div>
           </div>
 
