@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <h4 class="mt-4 mb-5">マイページ</h4>
-      <h4 class="mb-4"><strong>登録情報</strong><%= link_to "編集する",edit_customers_path %></h4>
+      <h3 class="mt-4 mb-5"><strong>マイページ</strong></h3>
+      <h4 class="mb-4"><strong class="mr-5">登録情報</strong><%= link_to "編集する",edit_customers_path,class: "btn btn-success font-weight-bold" %></h4>
 
       <div class="form-row">
         <div class="col-3 p-2 border border-dark bg-warning">氏名</div>
@@ -27,8 +27,8 @@
         <div class="col-3 p-2 border border-dark bg-warning">メールアドレス</div>
         <div class="col-7 p-2 border border-dark bg-white"><%= @customer.email %></div>
       </div>
-      <h4><strong>配送先</strong><%= link_to "一覧を見る",shipping_addresses_path %></h4>
-      <h4><strong>注文履歴</strong><%= link_to "一覧を見る",orders_path %></h4>
+      <h4><strong class="mr-5">配送先</strong><%= link_to "一覧を見る",shipping_addresses_path, class: "btn btn-primary font-weight-bold" %></h4>
+      <h4><strong class="mr-4">注文履歴</strong><%= link_to "一覧を見る",orders_path, class: "btn btn-primary font-weight-bold" %></h4>
 
     </div>
   </div>
