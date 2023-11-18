@@ -18,15 +18,27 @@ Rails.application.routes.draw do
     resources :items, except: [:destroy]
   end
 
-  scope module: 'public' do
+  scope module: :public do
     root to: 'homes#top'
     get 'about' => 'homes#about'
     resources :shipping_addresses, except: [:new, :show]
-    resources :orders, only: [:new, :create, :index, :show, :confirm, :complete]
-    resources :cart_items, only: [:index, :update, :create, :destroy, :destroy_all]
-    resource :customers, only: [:show, :edit, :update], path: 'customer'
-    get "customers/check"=>"customers#check",as: 'check'
-    patch "customers/cancellation"=>"customers#cancellation",as: "cancellation"
+    resources :orders, only: [:new, :create, :index, :show] do
+      collection do
+        post :confirm
+        get :complete
+      end
+    end
+    resources :cart_items, only: [:index, :update, :create, :destroy] do
+      collection do
+        delete :destroy_all
+      end
+    end
+    resource :customers, only: [:show, :edit, :update] do
+      collection do
+        get :check
+        patch :cancellation
+      end
+    end
     resources :items, only: [:index, :show]
   end
 
