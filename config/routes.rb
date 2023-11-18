@@ -33,7 +33,7 @@ Rails.application.routes.draw do
         delete :destroy_all
       end
     end
-    resource :customers, only: [:show, :edit, :update] do
+    resource :customers, only: [:show, :edit, :update],path: "customer" do
       collection do
         get :check
         patch :cancellation
