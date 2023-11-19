@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get 'about' => 'homes#about'
     resources :shipping_addresses, except: [:new, :show]
+    get 'orders/confirm' => 'orders#confirm'
     resources :orders, only: [:new, :create, :index, :show] do
       collection do
         post :confirm
