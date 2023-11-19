@@ -1,19 +1,21 @@
 <div class="container text-center">
-  <div class="row mt-5">
-    <div class="col-2 border">
-      <table class="table">
-        <h4>ジャンル一覧</h4>
-        <% @genres.each do |genre| %>
-          <tbody>
-            <tr>
-              <th><%= link_to genre.name, items_path %></th>
-            </tr>
-          </tbody>
-        <% end %>
-      </table>
-    </div>
-    <div class="col-10">
-
+  <div class="row">
+    <div class="col-12">
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          <% @items.each do |item| %>
+            <div class="swiper-slide">
+              <%= image_tag item.image, class: "swiper-lazy swiper-slide-img" %>
+              <div class="slide-content">
+                <h4><%= item.name %></h4>
+                <p><%= item.description %></p>
+                <p><%= item.excluding_tax_price %> 円</p>
+                <%= link_to '詳細', item_path(item), class: "btn btn-info btn-sm" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
   <div class="row">
@@ -23,3 +25,16 @@
   </div>
 </div>
 
+
+    <div class="col-2 border">
+      <table class="table">
+        <h4>ジャンル一覧</h4>
+        <% @genres.each do |genre| %>
+          <tbody>
+            <tr>
+              <th><%= genre.name %></th>
+            </tr>
+          </tbody>
+        <% end %>
+      </table>
+    </div>

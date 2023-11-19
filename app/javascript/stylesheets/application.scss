@@ -10,27 +10,4 @@ $dark: #4e454a;
 
 // SCSSをインポート
 @import '~bootstrap/scss/bootstrap';
-
-// 普通の記述
-html {
-  height: 100%;
-}
-
-body {
-  background-color: #eee9e6;
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
-
-.navbar {
-  background-color: #583822;
-}
-
-#footer {
-  background-color: #d8a373;
-  position: sticky;
-  top: 100vh;
-  width: 100%;
-  height: 80px;
-}
+@import 'typography'
