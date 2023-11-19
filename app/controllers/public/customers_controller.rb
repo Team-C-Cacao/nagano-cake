@@ -12,8 +12,11 @@ class Public::CustomersController < ApplicationController
 
   def update
     @customer = current_customer
-    @customer.update(customer_params)
-    redirect_to customers_path
+    if @customer.update(customer_params)
+       redirect_to customers_path
+    else
+       render :edit
+    end
   end
 
   def check
@@ -23,7 +26,8 @@ class Public::CustomersController < ApplicationController
     @customer = current_customer
     @customer.update(is_active: false)
     sign_out(@customer)
-    redirect_to root_path,notice: "退会が完了しました。"
+    flash[:notice] = "退会が完了しました。"
+    redirect_to root_path
   end
 
   private
