@@ -9,7 +9,6 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     byebug
     @cart_items = CartItem.where(customer_id: current_customer.id)
-    @shipping = 800
     @selected_payment_method = params[:order][:payment_method]
 
     #以下、商品合計額の計算
