@@ -1,10 +1,6 @@
 class Public::CustomersController < ApplicationController
-<<<<<<< HEAD
-  before_action :authenticate_customer!
-=======
 
     before_action :is_matching_customer
->>>>>>> origin/develop
 
   def show
     @customer = current_customer

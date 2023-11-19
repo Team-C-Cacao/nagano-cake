@@ -34,9 +34,10 @@ Rails.application.routes.draw do
         delete :destroy_all
       end
     end
-    resource :customers, only: [:show, :update] do
+    resource :customers, only: [:show] do
       collection do
         get "infomation/edit"=>:edit
+        patch "infomation/update"=>:update
         get :check
         patch :cancellation
       end

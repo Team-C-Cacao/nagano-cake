@@ -5,7 +5,7 @@
 
    <%= render "public/shared/error_messages", resource: @customer %>
 
-    <%= form_with model: @customer, url: customers_path, method: :patch do |f| %>
+    <%= form_with model: @customer, url: infomation_update_customers_path, method: :patch do |f| %>
 
   <div class="form-row">
     <span class="form-group col-3">氏名</span>
