@@ -7,8 +7,8 @@ class Public::ConfirmationsController < Devise::ConfirmationsController
   # end
 
   # POST /resource/confirmation
-  def create
-  end
+  #def create
+  #end
 
   # GET /resource/confirmation?confirmation_token=abcdef
   # def show
