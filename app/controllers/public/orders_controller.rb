@@ -7,6 +7,7 @@ class Public::OrdersController < ApplicationController
 
   def confirm
     @order = Order.new(order_params)
+    byebug
     @cart_items = CartItem.where(customer_id: current_customer.id)
     @shipping = 800
     @selected_payment_method = params[:order][:payment_method]
