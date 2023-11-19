@@ -4,7 +4,10 @@
      <h4 class="mb-4"><strong>ログイン</strong></h4>
       <strong>会員の方はこちらからログイン</strong>
 
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= form_with model: @customer, url: customer_session_path do |f| %>
+
+      <%= render "public/shared/error_messages", resource: resource %>
+
      <div class="form-row mt-4">
     <span class="form-group col-3">メールアドレス</span>
      <div class="form-group col-6">
