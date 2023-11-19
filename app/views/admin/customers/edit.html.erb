@@ -5,6 +5,8 @@
 
     　 <%= form_with model: @customer, url: admin_customer_path(@customer),method: :patch do |f| %>
 
+    　 <%= render "public/shared/error_messages", resource: @customer %>
+
     　 <div class="form-row">
         <span class="form-group col-3">会員ID</span>
         <div class="form-group col-6">
