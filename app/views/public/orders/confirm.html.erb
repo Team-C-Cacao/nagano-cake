@@ -1,13 +1,14 @@
 <div class="container">
   <div class="row">
-      <h2>注文情報確認</h2>
-        <table class='table col-md-6 table-hover table-inverse table-bordered'>
+    <div class="col-md-8 offset-md-2">
+      <h2 class="mt-4">注文情報確認</h2>
+        <table class='table table-hover table-inverse table-bordered'>
           <thead>
             <tr>
               <th>商品名</th>
               <th>単価(税込)</th>
               <th>数量</th>
-              <th>小計</th>
+              <th class="text-right">小計</th>
             </tr>
           </thead>
           <tbody>
@@ -17,52 +18,63 @@
                   <%= image_tag cart_item.item.get_item_image(100,80) %>
            　      <strong><%= cart_item.item.name %></strong>
                 </td>
-                <td><%= cart_item.order_details.including_tax_price %></td>
-                <td><%= cart_item.order_details.amount %></td>
-                <td><%= cart_item.item.price*cart_item.quantity %></td>
+                <td class="align-middle"><%= number_to_currency(cart_item.item.tax_included_price, unit: "", precision: 0) %></td>
+                <td class="align-middle"><%= cart_item.amount %></td>
+                <td class="align-middle text-right"><%= number_to_currency(cart_item.item.tax_included_price * cart_item.amount, unit: "", precision: 0) %></td>
               </tr>
             <% end %>
           </tbody>
         </table>
+    </div>
+  </div>
+</div>
 
-        <table class="table col-md-2 table-hover table-inverse table-bordered">
-          <tr>
-            <td>送料</td>
-            <td><%= @shipping %></td>
-          </tr>
-          <tr>
-            <td>商品合計</td>
-            <td><%= number_to_currency(@cart_items.excluding_tax_price, delimiter: ',', format: '¥ %n', precision: 0) %></td>
-          </tr>
-          <tr>
-            <td>請求額</td>
-            <td><%= @total %></td>
-          </tr>
-        </table>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2 float-right">
+      <table class="table table-hover table-inverse">
+        <tr>
+          <td class="font-weight-bold">送料</td>
+          <td class="text-right"><%= @order.shipping %></td>
+        </tr>
+        <tr>
+          <td class="font-weight-bold">商品合計</td>
+          <td class="text-right"><%= number_to_currency(@cart_items_price, delimiter: ',', format: '%n', precision: 0) %></td>
+        </tr>
+        <tr>
+          <td class="font-weight-bold">請求額</td>
+          <td class="text-right"><%= number_to_currency(@total, unit: "", precision: 0) %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
 
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
       <h3>支払方法</h3>
         <%= @order.payment_method %>
 
       <h3>お届け先</h3>
         <%= @address %>
 
-        <%= form_with url: orders_path, method: :post do %>
+        <%= form_with url: orders_path, method: :post do |f| %>
+          <%= f.hidden_field :payment_method, value: @order.payment_method %>
+          <%= f.hidden_field :address, value: @order.address %>
 
-        <%= hidden_field_tag 'order[pay_method]', @selected_payment_method %>
-        <%= hidden_field_tag 'order[address_type]', @address_type %>
-
-          <% if @address_type == "shipping_address" %>
-            <%= hidden_field_tag 'order[shipping_address_id]', params[:order][:shipping_address_id] %>
-          <% elsif @address_type == "new_address" %>
-            <%= hidden_field_tag 'order[new_post_code]', params[:order][:new_postal_code] %>
-            <%= hidden_field_tag 'order[new_address]', params[:order][:new_address] %>
-            <%= hidden_field_tag 'order[new_name]', params[:order][:new_name] %>
+          <% if @address == "shipping_address" %>
+            <%= f.hidden_field :shipping_address, value: @order.shipping_address %>
+          <% elsif @address == "new_address" %>
+            <%= f.hidden_field :new_postal_code, value: @order.new_postal_code %>
+            <%= f.hidden_field :new_address, value: @order.new_address %>
+            <%= f.hidden_field :new_name, value: @order.new_name %>
           <% end %>
-          <%= submit_tag "注文を確定する", class: "btn btn-success" %>
+
+        <div class="text-right mb-5">
+          <%= f.submit "注文を確定する", class: "btn btn-success" %>
+        </div>
         <% end %>
-
-      <%= render 'public/shared/footer.html.erb' %>
-
     </div>
   </div>
 </div>
