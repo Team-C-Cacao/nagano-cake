@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:new, :create, :index, :show] do
       collection do
         post :confirm
+        get :confirm
         get :complete
       end
     end
@@ -33,8 +34,9 @@ Rails.application.routes.draw do
         delete :destroy_all
       end
     end
-    resource :customers, only: [:show, :edit, :update],path: "customer" do
+    resource :customers, only: [:show, :update] do
       collection do
+        get "infomation/edit"=>:edit
         get :check
         patch :cancellation
       end
