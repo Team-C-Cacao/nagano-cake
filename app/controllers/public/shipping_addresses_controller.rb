@@ -5,12 +5,12 @@ class Public::ShippingAddressesController < ApplicationController
   end
 
   def create
-      @shipping_address = ShippingAddress.new(shipping_addresses_params)
+      @shipping_address = ShippingAddress.new(shipping_address_params)
       @shipping_address.customer_id = current_customer.id
       if @shipping_address.save
         redirect_to request.referer, notice: "新規配送先を登録しました。"
       else
-        @shipping_address = ShippingAddress.all
+        @shipping_addresses = ShippingAddress.all
         render 'index'
       end
     end
@@ -29,7 +29,7 @@ class Public::ShippingAddressesController < ApplicationController
 
   def update
     @shipping_address = ShippingAddress.find(params[:id])
-    if @shipping_address.update(shipping_addresses_params)
+    if @shipping_address.update(shipping_address_params)
       redirect_to shipping_addresses_path, notice: "配達先を変更しました。"
     else
       render :edit
@@ -38,8 +38,8 @@ class Public::ShippingAddressesController < ApplicationController
 
   private
 
-  def shipping_addresses_params
-    params.require(:shipping_address).permit(:postal_code, :shipping_addresses, :name)
+  def shipping_address_params
+    params.require(:shipping_address).permit(:postal_code, :shipping_address, :name)
   end
 
 end
