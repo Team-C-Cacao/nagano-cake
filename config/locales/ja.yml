@@ -47,6 +47,15 @@ ja:
               blank: "住所を入力してください"
             phone_number:
               blank: "電話番号を入力してください"
+      models:
+        shipping_address:
+          attributes:
+            name:
+              blank: "宛名を入力してください"
+            shipping_address:
+              blank: "住所を入力してください"
+            postal_code:
+              blank: "郵便番号を入力してください"
 
   date:
     abbr_day_names:
