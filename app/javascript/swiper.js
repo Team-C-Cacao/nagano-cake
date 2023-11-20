@@ -1,25 +1,15 @@
 /*global Swiper*/
 document.addEventListener('turbolinks:load', () => {
-  var swiper = new Swiper('.swiper', {
-    // 他のオプション...
+  const swiper = new Swiper('.swiper', {
     loop: true,
-    effect: "fade",
+    effect: "fade", //切り替え方法をfadeに変更
     fadeEffect: {
       crossFade: true
     },
     autoplay: {
-      delay: 3000, // 3秒ごと
+      delay: 3000, // 3秒間表示
       disableOnInteraction: false,
     },
-    speed: 3000,
-  });
-
-  // Swiperにホバー時のイベントを追加
-  document.querySelector('.swiper').addEventListener('mouseenter', () => {
-    swiper.autoplay.stop();
-  });
-
-  document.querySelector('.swiper').addEventListener('mouseleave', () => {
-    swiper.autoplay.start();
+    speed: 3000, //3秒間で切り替え
   });
 });
