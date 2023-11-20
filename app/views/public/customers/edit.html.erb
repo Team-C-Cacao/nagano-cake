@@ -2,7 +2,10 @@
   <div class="row mb-5">
     <div class="col-12">
    <h4 class="mt-3 mb-5"><strong>会員情報編集</strong></h4>
-    <%= form_with model: @customer, url: customers_path, method: :patch do |f| %>
+
+   <%= render "public/shared/error_messages", resource: @customer %>
+
+    <%= form_with model: @customer, url: infomation_update_customers_path, method: :patch do |f| %>
 
   <div class="form-row">
     <span class="form-group col-3">氏名</span>
@@ -59,7 +62,7 @@
 
   <div class="actions form-group justify-content:center; d-flex">
     <%= f.submit "編集内容を保存",class: "btn btn-success d-grid gap-2 col-5 mx-auto mb-3" %>
-    <%= link_to "退会する",check_path, class: "btn btn-danger mb-3" %>
+    <%= link_to "退会する",check_customers_path, class: "btn btn-danger mb-3" %>
   </div>
 <% end %>
   </div>
