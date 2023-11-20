@@ -6,7 +6,7 @@ class Admin::OrdersController < ApplicationController
   # def update
     #@order = order.find(params[:id])
     #if @order.update(order_params)
-     # redirect_to order_path(@order), notice: "You have updated book successfully."
+     # redirect_to order_path(@order), notice: "注文ステータスの変更しました"
     #else
      # render :edit
     #end
