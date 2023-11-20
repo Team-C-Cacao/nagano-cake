@@ -1,2 +1,56 @@
-<h1>Public::CartItems#index</h1>
-<p>Find me in app/views/public/cart_items/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h2>ショッピングカート</h2>
+    <h2><%= link_to 'カートを空にする', destroy_all_cart_items_path, method: :delete, class: "btn btn-danger", data: { confirm: 'カート内の全商品を削除しますか？' } %></h2>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>単価(税込み)</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cart_items.each do |cart_item| %>
+            <tr>
+              <td><%= cart_item.item.name %></td>
+              <td><%= number_to_currency(cart_item.tax_included_price, unit: "", precision: 0) %></td>
+              <td>
+                <%= form_with model: cart_item, method: :patch do |f| %>
+                  <%= f.hidden_field :item_id %>
+                  <%= f.select :amount, (1..20) %>
+                  <%= f.submit "変更" %>
+                <% end %>
+              </td>
+              <td><%= number_to_currency(cart_item.subtotal, unit: "", precision: 0) %></td>
+              <td><%= link_to '削除する', cart_item_path(cart_item.id), method: :delete, class: "btn btn-danger", data: { confirm: "#{cart_item.item.name}を削除しますか？" } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">
+      <%= link_to '買い物を続ける', root_path, class: "btn btn-primary" %>
+    </div>
+    <div class="col-3 offset-7">
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>合計金額</th>
+            <td><%= number_to_currency(@total_price, unit: "", precision: 0) %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <%= link_to '注文情報入力に進む', new_order_path, class: "btn btn-success" %>
+  </div>
+</div>
