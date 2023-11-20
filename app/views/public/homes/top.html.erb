@@ -1,4 +1,4 @@
-<div class="container text-center">
+<div class="container-fluid text-center px-0">
   <div class="row">
     <div class="col-12">
       <div class="swiper">
@@ -6,14 +6,20 @@
           <% @items.each do |item| %>
             <div class="swiper-slide">
               <%= image_tag item.image, class: "swiper-lazy swiper-slide-img" %>
-              <div class="slide-content">
-                <h4><%= item.name %></h4>
-                <p><%= item.description %></p>
-                <p><%= item.excluding_tax_price %> 円</p>
-                <%= link_to '詳細', item_path(item), class: "btn btn-info btn-sm" %>
-              </div>
+              <!--<div class="slide-content">-->
+              <!--  <h4>%= item.name %></h4>-->
+              <!--  <p>%= item.description %></p>-->
+              <!--  <p>%= item.excluding_tax_price %> 円</p>-->
+              <!--  %= link_to '詳細', item_path(item), class: "btn btn-info btn-sm" %>-->
+              <!--</div>-->
             </div>
           <% end %>
+        </div>
+      </div>
+      <div class="main-text">
+        <div class="main-contianer">
+          <h2>ようこそ、ながのCAKEへ！</h2>
+          <h4>このサイトは、ケーキ販売のECサイトになります。<br>会員でない方も商品の閲覧はできますが、<br>購入には会委員登録が必要になります。</h4>
         </div>
       </div>
     </div>
