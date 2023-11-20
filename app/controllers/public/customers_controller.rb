@@ -16,6 +16,7 @@ class Public::CustomersController < ApplicationController
       flash[:notice] = "登録情報を編集しました"
        redirect_to customers_path
     else
+      flash.now[:alert] = "登録情報の編集に失敗しました"
        render :edit
     end
   end

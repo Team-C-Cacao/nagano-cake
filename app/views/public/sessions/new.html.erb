@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col-12 mx-auto">
-     <h4 class="mb-4"><strong>ログイン</strong></h4>
-      <strong>会員の方はこちらからログイン</strong>
+     <h4 class="col-2 mt-3 mb-5 text-center bg-info text-light"><strong>ログイン</strong></h4>
+      <strong class="col-3 text-center bg-info text-light">会員の方はこちらからログイン</strong>
 
       <%= form_with model: @customer, url: customer_session_path do |f| %>
 
@@ -22,7 +22,7 @@
     </div>
   </div>
      <div class="actions form-group mt-5 justify-content:center; d-flex">
-     <%= f.submit "ログイン",class: "btn btn-primary d-grid gap-2 col-4 mx-auto mb-3" %>
+     <%= f.submit "ログイン",class: "btn btn-info text-light d-grid gap-2 col-4 mx-auto mb-3" %>
      </div>
      <% end %>
 
