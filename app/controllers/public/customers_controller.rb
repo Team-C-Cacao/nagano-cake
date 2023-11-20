@@ -13,8 +13,10 @@ class Public::CustomersController < ApplicationController
   def update
     @customer = current_customer
     if @customer.update(customer_params)
+      flash[:notice] = "登録情報を編集しました"
        redirect_to customers_path
     else
+      flash.now[:alert] = "登録情報の編集に失敗しました"
        render :edit
     end
   end

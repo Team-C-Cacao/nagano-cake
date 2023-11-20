@@ -37,7 +37,7 @@ Rails.application.routes.draw do
     resource :customers, only: [:show] do
       collection do
         get "infomation/edit"=>:edit
-        patch "infomation/update"=>:update
+        patch "infomation/edit"=>:update
         get :check
         patch :cancellation
       end
