@@ -1,7 +1,7 @@
 class Item < ApplicationRecord
 
   has_many :cart_items
-  has_many :oder_details
+  has_many :order_details
   belongs_to :genre
 
 
@@ -13,6 +13,10 @@ class Item < ApplicationRecord
       image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
     image.variant(resize_to_fill: [width, height]).processed
+  end
+
+  def tax_included_price
+    excluding_tax_price * 1.10
   end
 
 
