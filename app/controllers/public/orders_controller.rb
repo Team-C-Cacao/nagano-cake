@@ -17,24 +17,28 @@ class Public::OrdersController < ApplicationController
     @cart_items_price = ary.sum
     @order.shipping = 800
     @total = @order.shipping + @cart_items_price
-    @order.address_type = params[:order][:address_type]
-    case @order.address_type
-    when "customer_address"
-      @address = current_customer.postal_code + " " + current_customer.address + " " + current_customer.last_name + current_customer.first_name
-    when "shipping_address"
-      unless params[:order][:shipping_address] == ""
-        selected = Address.find(params[:order][:shipping_address])
-        @address = selected.postal_code + " " + selected.address + " " + selected.name
-      else
-        render :new
-      end
-    when "new_address"
-      unless params[:order][:new_postal_code] == "" && params[:order][:new_address] == "" && params[:order][:new_name] == ""
-        @address = params[:order][:new_postal_code] + " " + params[:order][:new_address] + " " + params[:order][:new_name]
-      else
-        render :new
-      end
+
+    if params[:order][:address_option] == "0"
+      @order.new_postal_code = current_customer.postal_code
+      @order.new_address = current_customer.address
+      @order.new_name = current_customer.last_name + current_customer.first_name
+
+      # collection.selectであれば
+    elsif params[:order][:address_option] == "1"
+      ship = Address.find(params[:order][:customer_id])
+      @order.new_postal_code = ship.postal_code
+      @order.new_address = ship.address
+      @order.new_name = ship.name
+
+      # 新規住所入力であれば
+    elsif params[:order][:address_option] = "2"
+      @order.new_postal_code = params[:order][:new_postal_code]
+      @order.new_address = params[:order][:new_address]
+      @order.new_name = params[:order][:new_name]
+    else
+      render 'new'
     end
+
   end
 
   def create
@@ -55,8 +59,8 @@ class Public::OrdersController < ApplicationController
       @order.order_status = 0
     end
 
-    order.address_type = params[:order][:order.address_type]
-    case order.address_type
+    order.address = params[:order][:order.address]
+    case order.address
       when "customer_address"
         @order.postal_code = current_customer.postal_code
         @order.address = current_customer.address
