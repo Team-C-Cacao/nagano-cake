@@ -1,6 +1,6 @@
 class Public::ShippingAddressesController < ApplicationController
   def index
-    @shipping_addresses = ShippingAddress.all
+    @shipping_addresses = ShippingAddress.where(customer: current_customer)
     @shipping_address = ShippingAddress.new
   end
 
