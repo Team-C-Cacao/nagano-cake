@@ -11,16 +11,31 @@
     		<%= link_to '注文履歴一覧', admin_root_path, class: "btn btn-warning mr-4" %>
     		<%= link_to 'ジャンル一覧', admin_genres_path, class: "btn btn-warning mr-4" %>
     		<%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "btn btn-warning mr-4" %>
+    	  <% if @range.nil? %>
+    	    <%= render 'layouts/search', range: "Item" %>
+    	  <% else %>
+    	   	<%= render 'layouts/search', range: @range %>
+    	  <% end %>
     	<% elsif customer_signed_in? %>
     		<%= link_to 'マイページ', customers_path, class: "btn btn-warning mr-4" %>
     		<%= link_to '商品一覧', items_path, class: "btn btn-warning mr-4" %>
     		<%= link_to 'カート', cart_items_path, class: "btn btn-warning mr-4" %>
     		<%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class: "btn btn-warning mr-4" %>
+    		<% if @range.nil? %>
+    	    <%= render 'layouts/search', range: "Item" %>
+    	  <% else %>
+    	   	<%= render 'layouts/search', range: @range %>
+    	  <% end %>
     	<% else %>
 	   		<%= link_to 'About', about_path, class: "btn btn-warning mr-4" %>
 	      <%= link_to '商品一覧', items_path, class: "btn btn-warning mr-4" %>
 	      <%= link_to '新規登録', new_customer_registration_path, class: "btn btn-warning mr-4" %>
 	      <%= link_to 'ログイン', new_customer_session_path, class: "btn btn-warning mr-4" %>
+	      <% if @range.nil? %>
+    	    <%= render 'layouts/search', range: "Item" %>
+    	  <% else %>
+    	   	<%= render 'layouts/search', range: @range %>
+    	  <% end %>
 	    <% end %>
     </div>
   </div>
