@@ -1,2 +1,34 @@
-<h1>Public::Homes#about</h1>
-<p>Find me in app/views/public/homes/about.html.erb</p>
+<div class="container">
+  <div class="row" style="margin-top: 200px; margin-bottom: 200px;">
+    <div class="col-12">
+      <div class="about-contents text-center">
+        <h1 class="mb-5 about" style="font-size: 120px;">About</h1>
+        <h3>
+          ながのCAKEは全国発送可能なケーキ屋さんです。<br>
+          お子様からお年寄りの方までお召し上がりいただけるよう、<br>
+          様々なバリエーションをご用意しております。<br>
+          また、全国へ発送可能ですので「いつ」でも「どこ」でもご注文いただけます。<br>
+          ぜひご注文ください。
+        </h3>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="swiper swiper2">
+  <div class="swiper-wrapper swiper-wrapper2">
+    <% @items1.each do |item| %>
+      <div class="swiper-slide swiper-slide2">
+        <%= image_tag item.get_item_image(170,170) %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div class="swiper swiper3" style="margin-top: 15px;">
+  <div class="swiper-wrapper swiper-wrapper3">
+    <% @items2.each do |item| %>
+      <div class="swiper-slide swiper-slide3">
+        <%= image_tag item.get_item_image(170,170) %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row" style="margin-top: 100px;">
     <div class="col-12">
-      <div class="swiper">
-        <div class="swiper-wrapper">
+      <div class="swiper swiper1">
+        <div class="swiper-wrapper swiper-wrapper1">
           <% @items.each do |item| %>
-            <div class="swiper-slide">
+            <div class="swiper-slide swiper-slide1">
               <%= image_tag item.image.attached? ? item.image : 'no_image.jpg', class: "swiper-lazy swiper-slide-img" %>
             </div>
           <% end %>
@@ -13,7 +13,11 @@
       <div class="main-text text-center">
         <div class="main-contianer">
           <h1 class="mb-5">ようこそ、ながのCAKEへ！</h1>
-          <p>このサイトは、ケーキ販売のECサイトになります。<br>会員でない方も商品の閲覧はできますが、<br>購入には会委員登録が必要になります。</p>
+          <p>
+            このサイトは、ケーキ販売のECサイトになります。<br>
+            会員でない方も商品の閲覧はできますが、<br>
+            購入には会委員登録が必要になります。
+          </p>
         </div>
       </div>
     </div>
