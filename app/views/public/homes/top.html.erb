@@ -1,11 +1,11 @@
 <div class="container">
-  <div class="row">
+  <div class="row" style="margin-top: 100px;">
     <div class="col-12">
       <div class="swiper">
         <div class="swiper-wrapper">
           <% @items.each do |item| %>
             <div class="swiper-slide">
-              <%= image_tag item.image.attached? item.image : 'no_image.jpg', class: "swiper-lazy swiper-slide-img" %>
+              <%= image_tag item.image.attached? ? item.image : 'no_image.jpg', class: "swiper-lazy swiper-slide-img" %>
             </div>
           <% end %>
         </div>
