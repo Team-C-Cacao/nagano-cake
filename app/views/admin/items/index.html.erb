@@ -1,7 +1,12 @@
 <div class="container">
   <div class="row">
     <div class="col-10 mx-auto mt-5">
-      <h2>商品一覧</h2>
+      <h2 class="d-flex justify-content-between mb-5 mr-3">
+        商品一覧
+        <%= link_to new_admin_item_path, class: "small" do %>
+          <i class="fa-solid fa-plus"></i>
+        <% end %>
+      </h2>
       <table class="table">
         <thead>
           <tr class="table-secondary">
@@ -17,9 +22,15 @@
             <tr>
               <td><%= item.id %></td>
               <td><%= link_to item.name, admin_item_path(item) %></td>
-              <td><%= item.excluding_tax_price %></td>
+              <td>¥ <%= item.excluding_tax_price %></td>
               <td><%= item.genre.name %></td>
-              <td><%= item.is_active ? "販売中" : "販売停止中" %></td>
+              <td>
+                <% if item.is_active %>
+                  <span class="text-info">販売中</span>
+                <% else %>
+                  <span class="text-danger">販売停止中</span>
+                <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>
