@@ -1,11 +1,11 @@
 <div class="container">
-  <div class="row">
+  <div class="row" style="margin-top: 100px;">
     <div class="col-12">
       <div class="swiper">
         <div class="swiper-wrapper">
           <% @items.each do |item| %>
             <div class="swiper-slide">
-              <%= image_tag item.image, class: "swiper-lazy swiper-slide-img" %>
+              <%= image_tag item.image.attached? ? item.image : 'no_image.jpg', class: "swiper-lazy swiper-slide-img" %>
             </div>
           <% end %>
         </div>
@@ -37,7 +37,7 @@
         <% @newitems.each do |item| %>
           <div class="col-md-6 col-lg-4">
             <div class="card mb-4" style="width: 16rem;">
-              <%= image_tag item.image, style: "height: 160px;" %>
+              <%= image_tag item.get_item_image(160,120) %>
               <div class="card-body">
                 <h5 class="card-title"><%= item.name %></h5>
                 <p class="card-text"><%= item.description %></p>
