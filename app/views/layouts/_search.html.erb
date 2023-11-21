@@ -1,6 +1,6 @@
 <%= form_with url: search_path, method: :get, local: true do |f| %>
     <%= f.text_field :word, :value => range %>
     <%= f.hidden_field :range, :value => range %>
-    <!--itemかcustomerか判断-->-->
+    <!--itemかcustomerか判断-->
     <%= f.submit "検索" %>
 <% end %>
