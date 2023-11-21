@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row mb-5">
+    <div class="col-12">
+      <div class="col-7 mt-3 text-center">
+     <span style= "font-size: 30px;"><%= @customer.last_name %><%= @customer.first_name %></span><span style= "font-size: 20px;">さんの</span><span style= "font-size: 30px;">注文履歴</span>
+     </div>
+
+     <table class="table table-hover mt-3">
+     <tr>
+       <th class="bg-success">購入日時</th>
+       <th class="bg-success">注文個数</th>
+       <th class="bg-success">注文ステータス</th>
+      </tr>
+
+      <% @orders.each do |order| %>
+      <tr>
+        <td><%= link_to order.created_at.strftime("%Y/%m/%d"),admin_order_path(order.id) %></td>
+        <td><%= order.id %></td>
+        <td>
+          <% if order.order_status == 0 %>
+          入金待ち
+          <% elsif order.order_status == 1 %>
+          入金確認
+          <% elsif order.order_status == 2 %>
+          制作中
+          <% elsif order.order_status == 3 %>
+          発送準備中
+          <% else %>
+          発送済み
+          <% end %>
+          </td>
+      </tr>
+      <% end %>
+
+     </table>
+     </div>
+   </div>
+  </div>
