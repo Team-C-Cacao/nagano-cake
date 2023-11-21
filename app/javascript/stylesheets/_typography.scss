@@ -45,20 +45,25 @@ body {
 }
 
 .main-text {
-  background-color: rgba(0, 0, 0, 0.5);
+  // background-color: rgba(255, 255, 255, 0.3);
   color: black;
   width: 50%;
-  height: 45%;
+  height: 35%;
   position: absolute;
-  top: 30%;
+  top: 90%;
   left: 8%;
   transform: translate(-50%, -50%);
   z-index: 2;
   display: flex;
   justify-content: center;
   align-items: center;
-  // width: calc(100% - 30px);
   text-shadow: 0px 0px 10px white;
+}
+.main-text h1 {
+  margin-bottom: 30px;
+}
+.main-text p {
+  margin-bottom: 10px;
 }
 
 .text-container {
@@ -74,4 +79,7 @@ body {
 .about-slide-img {
   height: auto;
   width: 100%;
+}
+.genre-title {
+  text-shadow: 0px 0px 10px white;
 }

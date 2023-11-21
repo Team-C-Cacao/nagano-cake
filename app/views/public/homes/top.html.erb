@@ -10,24 +10,23 @@
           <% end %>
         </div>
       </div>
-      <div class="main-text text-center ">
+      <div class="main-text text-center border-left border-bottom border-info">
         <div class="main-contianer">
           <h1><strong>ようこそ、ながのCAKEへ！</strong></h1>
-          <p>
-            このサイトは、ケーキ販売のECサイトになります。<br>
-            会員でない方も商品の閲覧はできますが、<br>
-            購入には会委員登録が必要になります。
+          <h5>このサイトは、ケーキ販売のECサイトになります。</h5>
+          <h5>会員でない方も商品の閲覧はできますが、</h5>
+          <h5>購入には会委員登録が必要になります。</h5>
           </p>
         </div>
       </div>
     </div>
   </div>
   <div class="row" style="margin-top: 100px;">
-    <div class="col-2">
+    <div class="col-3">
       <%= render 'layouts/genres', genres: @genres %>
     </div>
-    <div class="col-9 offset-1">
-      <h3 style="text-shadow: 0px 0px 10px white;"><strong>新着商品</strong></h3>
+    <div class="col-9 mt-2">
+      <h4 style="text-shadow: 0px 0px 10px white;"><strong>新着商品</strong></h4>
       <div class="row">
         <% @newitems.each do |item| %>
           <div class="col-md-6 col-lg-4">
