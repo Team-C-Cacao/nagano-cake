@@ -4,9 +4,9 @@
 	</div>
 	<div class="name-section" style="color: white;">
 		<% if customer_signed_in? %>
-			<h5>ようこそ、<%= current_customer.last_name %> さん</h5>
+			<h5>ようこそ、<%= current_customer.last_name %> さん!</h5>
 		<% elsif admin_signed_in? %>
-			<h5>管理者画面です</h5>
+			<h5>管理者でログインしています</h5>
 		<% else %>
 		<% end %>
 	</div>
