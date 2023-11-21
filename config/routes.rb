@@ -9,6 +9,9 @@ Rails.application.routes.draw do
     sessions: "public/sessions"
   }
 
+  get '/search' => 'searches#search'
+  get '/genre/search' => 'searches#genre_search'
+
   namespace :admin do
     root to: 'homes#top'
     resources :orders, only: [:show, :update]

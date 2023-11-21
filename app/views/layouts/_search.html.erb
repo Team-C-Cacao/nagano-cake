@@ -1,0 +1,16 @@
+<% if admin_signed_in? %>
+  <%= form_with url: search_path, method: :get, local: true do |f| %>
+    <%= f.text_field :content %>
+    <%= f.submit "検索" %>
+  <% end %>
+<% elsif customer_signed_in? %>
+  <%= form_with url: search_path, method: :get, local: true do |f| %>
+    <%= f.text_field :content %>
+    <%= f.submit "検索" %>
+  <% end %>
+<% else %>
+    <%= form_with url: search_path, method: :get, local: true do |f| %>
+    <%= f.text_field :content %>
+    <%= f.submit "検索" %>
+  <% end %>
+<% end %>
