@@ -1,9 +1,14 @@
+<h4 style="text-shadow: 0px 0px 10px white;"><strong>ジャンル検索</strong></h4>
 <table class="table">
-  <h4>ジャンル検索</h4>
   <% genres.each do |genre| %>
-    <tbody>
+    <tbody style="background-color: white;">
       <tr>
-        <th><%= link_to genre.name, items_path(genre_id: genre.id), method: :get %></th>
+        <td style="text-align: left; color: #4e454a;">
+          <%= link_to genre.name, items_path(genre_id: genre.id), method: :get, class: "text-decoration-none" %>
+        </td>
+        <td style="text-align: right; color: #4e454a;">
+          <%= genre.items.count %>
+        </td>
       </tr>
     </tbody>
   <% end %>

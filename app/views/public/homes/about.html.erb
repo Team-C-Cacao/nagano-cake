@@ -1,3 +1,12 @@
+<div class="swiper swiper-about-top">
+  <div class="swiper-wrapper swiper-wrapper-about-top">
+    <% @items1.each do |item| %>
+      <div class="swiper-slide swiper-slide-about-top">
+        <%= image_tag item.image.attached? ? item.image : 'no_image.jpg', class: "about-slide-img" %>
+      </div>
+    <% end %>
+  </div>
+</div>
 <div class="container">
   <div class="row" style="margin-top: 200px; margin-bottom: 200px;">
     <div class="col-12">
@@ -14,20 +23,11 @@
     </div>
   </div>
 </div>
-<div class="swiper swiper2">
-  <div class="swiper-wrapper swiper-wrapper2">
-    <% @items1.each do |item| %>
-      <div class="swiper-slide swiper-slide2">
-        <%= image_tag item.get_item_image(170,170) %>
-      </div>
-    <% end %>
-  </div>
-</div>
-<div class="swiper swiper3" style="margin-top: 15px;">
-  <div class="swiper-wrapper swiper-wrapper3">
+<div class="swiper swiper-about-bottom" style="margin-top: 15px;">
+  <div class="swiper-wrapper swiper-wrapper-about-bottom">
     <% @items2.each do |item| %>
-      <div class="swiper-slide swiper-slide3">
-        <%= image_tag item.get_item_image(170,170) %>
+      <div class="swiper-slide swiper-slide-about-bottom">
+        <%= image_tag item.image.attached? ? item.image : 'no_image.jpg', class: "about-slide-img" %>
       </div>
     <% end %>
   </div>

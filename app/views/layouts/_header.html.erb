@@ -1,42 +1,43 @@
-<nav class="navbar navbar-expand-lg">
-  <a class="navbar-brand ml-4" href="/"><img class="logo" src="/assets/nagano-cake" height="80" alt="ロゴ"></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav ml-auto row">
-    	<% if admin_signed_in? %>
-    		<%= link_to '商品一覧', admin_items_path, class: "btn btn-warning mr-4" %>
-    		<%= link_to '会員一覧', admin_customers_path, class: "btn btn-warning mr-4" %>
-    		<%= link_to '注文履歴一覧', admin_root_path, class: "btn btn-warning mr-4" %>
-    		<%= link_to 'ジャンル一覧', admin_genres_path, class: "btn btn-warning mr-4" %>
-    		<%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "btn btn-warning mr-4" %>
-    	  <% if @range.nil? %>
-    	    <%= render 'layouts/search', range: "Item" %>
-    	  <% else %>
-    	   	<%= render 'layouts/search', range: @range %>
-    	  <% end %>
-    	<% elsif customer_signed_in? %>
-    		<%= link_to 'マイページ', customers_path, class: "btn btn-warning mr-4" %>
-    		<%= link_to '商品一覧', items_path, class: "btn btn-warning mr-4" %>
-    		<%= link_to 'カート', cart_items_path, class: "btn btn-warning mr-4" %>
-    		<%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class: "btn btn-warning mr-4" %>
-    		<% if @range.nil? %>
-    	    <%= render 'layouts/search', range: "Item" %>
-    	  <% else %>
-    	   	<%= render 'layouts/search', range: @range %>
-    	  <% end %>
-    	<% else %>
-	   		<%= link_to 'About', about_path, class: "btn btn-warning mr-4" %>
-	      <%= link_to '商品一覧', items_path, class: "btn btn-warning mr-4" %>
-	      <%= link_to '新規登録', new_customer_registration_path, class: "btn btn-warning mr-4" %>
-	      <%= link_to 'ログイン', new_customer_session_path, class: "btn btn-warning mr-4" %>
-	      <% if @range.nil? %>
-    	    <%= render 'layouts/search', range: "Item" %>
-    	  <% else %>
-    	   	<%= render 'layouts/search', range: @range %>
-    	  <% end %>
-	    <% end %>
-    </div>
-  </div>
-</nav>
+<div class="navbar">
+	<div class="logo-section ml-4 my-3">
+		<%= link_to root_path do %><img class="logo" src="/assets/nagano-cake" height="80" alt="ロゴ"><% end %>
+	</div>
+	<div class="name-section" style="color: white;">
+		<% if customer_signed_in? %>
+			<h5>ようこそ、<%= current_customer.last_name %> さん!</h5>
+		<% elsif admin_signed_in? %>
+			<h5>管理者でログインしています</h5>
+		<% else %>
+		<% end %>
+	</div>
+	<div class="right-section">
+		<div class="link-section mb-3">
+			<% if admin_signed_in? %>
+				<%= link_to '商品一覧', admin_items_path, class: "btn btn-warning mr-4" %>
+				<%= link_to '会員一覧', admin_customers_path, class: "btn btn-warning mr-4" %>
+				<%= link_to '注文履歴一覧', admin_root_path, class: "btn btn-warning mr-4" %>
+				<%= link_to 'ジャンル一覧', admin_genres_path, class: "btn btn-warning mr-4" %>
+				<%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "btn btn-warning mr-4" %>
+			<% elsif customer_signed_in? %>
+				<%= link_to 'マイページ', customers_path, class: "btn btn-warning mr-4" %>
+				<%= link_to '商品一覧', items_path, class: "btn btn-warning mr-4" %>
+				<%= link_to 'カート', cart_items_path, class: "btn btn-warning mr-4" %>
+				<%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class: "btn btn-warning mr-4" %>
+			<% else %>
+				<%= link_to 'About', about_path, class: "btn btn-warning mr-4" %>
+				<%= link_to '商品一覧', items_path, class: "btn btn-warning mr-4" %>
+				<%= link_to '新規登録', new_customer_registration_path, class: "btn btn-warning mr-4" %>
+				<%= link_to 'ログイン', new_customer_session_path, class: "btn btn-warning mr-4" %>
+			<% end %>
+		</div>
+		<div class="search-window d-flex justify-content-end mr-4">
+			<% if admin_signed_in? %>
+				<!-- 管理者用の検索フォーム -->
+				<%= render 'layouts/search', range: @range || "Item" %>
+			<% else %>
+				<!-- 会員用の検索フォーム (常に商品のみ) -->
+				<%= render 'layouts/search', range: "Item" %>
+			<% end %>
+		</div>
+	</div>
+</div>

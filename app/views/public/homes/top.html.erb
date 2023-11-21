@@ -1,38 +1,37 @@
 <div class="container">
   <div class="row" style="margin-top: 100px;">
     <div class="col-12">
-      <div class="swiper swiper1">
-        <div class="swiper-wrapper swiper-wrapper1">
+      <div class="swiper swiper-main-visual">
+        <div class="swiper-wrapper swiper-wrapper-main-visual">
           <% @items.each do |item| %>
-            <div class="swiper-slide swiper-slide1">
+            <div class="swiper-slide swiper-slide-main-visual">
               <%= image_tag item.image.attached? ? item.image : 'no_image.jpg', class: "swiper-lazy swiper-slide-img" %>
             </div>
           <% end %>
         </div>
       </div>
-      <div class="main-text text-center">
+      <div class="main-text text-center border-left border-bottom border-info">
         <div class="main-contianer">
-          <h1 class="mb-5">ようこそ、ながのCAKEへ！</h1>
-          <p>
-            このサイトは、ケーキ販売のECサイトになります。<br>
-            会員でない方も商品の閲覧はできますが、<br>
-            購入には会委員登録が必要になります。
+          <h1><strong>ようこそ、ながのCAKEへ！</strong></h1>
+          <h5>このサイトは、ケーキ販売のECサイトになります。</h5>
+          <h5>会員でない方も商品の閲覧はできますが、</h5>
+          <h5>購入には会委員登録が必要になります。</h5>
           </p>
         </div>
       </div>
     </div>
   </div>
   <div class="row" style="margin-top: 100px;">
-    <div class="col-2">
+    <div class="col-3">
       <%= render 'layouts/genres', genres: @genres %>
     </div>
-    <div class="col-9 offset-1">
-      <h3>新着商品</h3>
+    <div class="col-9">
+      <h4 style="text-shadow: 0px 0px 10px white;"><strong>新着商品</strong></h4>
       <div class="row">
         <% @newitems.each do |item| %>
           <div class="col-md-6 col-lg-4">
-            <div class="card mb-4" style="width: 16rem;">
-              <%= image_tag item.get_item_image(160,120) %>
+            <div class="card mb-4" style="width: auto;">
+              <%= image_tag item.image.attached? ? item.image : 'no_image.jpg', class: "about-slide-img" %>
               <div class="card-body">
                 <h5 class="card-title"><%= item.name %></h5>
                 <p class="card-text"><%= item.description %></p>
