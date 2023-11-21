@@ -5,6 +5,8 @@
      <span style= "font-size: 30px;"><%= @customer.last_name %><%= @customer.first_name %></span><span style= "font-size: 20px;">さんの</span><span style= "font-size: 30px;">注文履歴</span>
      </div>
 
+     <% if @orders.present? %>
+
      <table class="table table-hover mt-3">
      <tr>
        <th class="bg-success">購入日時</th>
@@ -14,23 +16,26 @@
 
       <% @orders.each do |order| %>
       <tr>
-        <td><%= link_to order.created_at.strftime("%Y/%m/%d"),admin_order_path(order.id) %></td>
-        <td><%= order.id %></td>
+        <td><%= link_to order.created_at.in_time_zone("Tokyo").strftime("%Y/%m/%d %H:%M:%S"),admin_order_path(order.id) %></td>
+        <td><%= order.order_details.sum(:amount) %></td>
         <td>
-          <% if order.order_status == 0 %>
+          <% if order.order_status.to_sym == :waiting_for_payment %>
           入金待ち
-          <% elsif order.order_status == 1 %>
-          入金確認
-          <% elsif order.order_status == 2 %>
-          制作中
-          <% elsif order.order_status == 3 %>
-          発送準備中
-          <% else %>
+          <% elsif order.order_status.to_sym == :payment_confirmation %>
+            入金確認
+          <% elsif order.order_status.to_sym == :in_production %>
+            制作中
+          <% elsif order.order_status.to_sym == :preparation_for_shipping %>
+            発送準備中
+          <% elsif order.order_status.to_sym == :sent %>
           発送済み
           <% end %>
           </td>
       </tr>
       <% end %>
+     <% else %>
+     <h1 class="text-center mt-5">まだ注文していません</h1>
+     <% end %>
 
      </table>
      </div>
