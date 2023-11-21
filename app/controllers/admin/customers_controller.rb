@@ -1,15 +1,18 @@
 class Admin::CustomersController < ApplicationController
   def index
     @customers = Customer.all.page(params[:page]).per(10)
+    @range = "Customer"
   end
 
   def show
     @customer = Customer.find(params[:id])
+    @range = "Customer"
   end
 
   def edit
     @customer = Customer.find(params[:id])
     @user = @customer
+    @range = "Customer"
   end
 
   def update

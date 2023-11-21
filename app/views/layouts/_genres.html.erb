@@ -3,7 +3,7 @@
   <% genres.each do |genre| %>
     <tbody>
       <tr>
-        <th><%= link_to genre.name, genre_search_path(genre_id: genre.id), method: :get %></th>
+        <th><%= link_to genre.name, items_path(genre_id: genre.id), method: :get %></th>
       </tr>
     </tbody>
   <% end %>

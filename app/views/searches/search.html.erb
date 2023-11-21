@@ -7,7 +7,7 @@
       <!-- 検索対象がitemのとき -->
     <% if @range == "Item" %>
       <div class="col-md-8">
-        <h3>"<%= @word %>"一覧（全<%#= @items.count %>件）</h3>
+        <h3>"<%= @word %>"一覧（全<%= @items.count %>件）</h3>
 
         <div class="search-items d-flex flex-wrap">
           <% @items.each do |item| %>
@@ -16,7 +16,7 @@
                 <%= image_tag item.get_item_image(150,110)  %><br>
                 <%= item.name %><br>
               <% end %>
-              ¥<%= number_to_currency(item.excluding_tax_price, delimiter: ',', format: '¥ %n', precision: 0) %>
+              <%= number_to_currency(item.excluding_tax_price, delimiter: ',', format: '¥ %n', precision: 0) %>
             </div>
           <% end %>
         </div>
@@ -26,7 +26,7 @@
     <% else %>
       <!--検索対象がcustomerのとき-->
       <div class="col-md-8">
-        <h3>"<% @word %>"に一致する会員一覧（全<%# @customer.count %>件）</h3>
+        <h3>"<%= @word %>"に一致する会員一覧（全<%= @customers.count %>件）</h3>
 
         <div class="search-items d-flex flex-wrap">
           <div class="search-item mr-2">
@@ -58,11 +58,14 @@
               </table>
           </div>
         </div>
-    <% end %>
 
         <div class="row mx-auto justify-content-center">
           <%= paginate @customers, theme: 'page' %>
         </div>
+
+    <% end %>
+
+
 
     </div>
   </div>
