@@ -20,16 +20,7 @@
   </div>
   <div class="row" style="margin-top: 100px;">
     <div class="col-2">
-      <table class="table">
-        <h4>ジャンル一覧</h4>
-        <% @genres.each do |genre| %>
-          <tbody>
-            <tr>
-              <th><%= genre.name %></th>
-            </tr>
-          </tbody>
-        <% end %>
-      </table>
+      <%= render 'layouts/genres', genres: @genres %>
     </div>
     <div class="col-9 offset-1">
       <h3>新着商品</h3>
