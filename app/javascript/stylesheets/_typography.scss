@@ -23,7 +23,7 @@ body {
 
 // swiperの記述
 
-.swiper-slide {
+.swiper-slide1 {
   position: relative;
 }
 .swiper-slide-img {
@@ -63,4 +63,11 @@ body {
 
 .text-container {
   text-align: center;
+}
+
+.swiper-wrapper2 {
+  transition-timing-function: linear;
+}
+.swiper-wrapper3{
+  transition-timing-function: linear;
 }
