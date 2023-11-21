@@ -3,7 +3,7 @@
       <div class="col-md-12">
         <h3>注文履歴詳細</h3>
 
-        <h4>注文情報</h4>
+        <h5>注文情報</h5>
         <table class="table">
           <tr>
             <td>注文日</td>
@@ -23,23 +23,23 @@
           </tr>
         </table>
 
-        <h4>請求情報</h4>
+        <h5>請求情報</h5>
         <table class="table">
           <tr>
             <td>商品合計</td>
-            <td><%= @order.total %></td>
+            <td><%= number_to_currency(@order.total, delimiter: ',', format: '%n', precision: 0) %></td>
           </tr>
           <tr>
             <td>配送料</td>
-            <td><%= @order.shipping %></td>
+            <td><%= number_to_currency(@order.shipping, delimiter: ',', format: '%n', precision: 0) %></td>
           </tr>
           <tr>
             <td>ご請求額</td>
-            <td><%= @order.total + @order.shipping %></td>
+            <td><%= number_to_currency(@order.total + @order.shipping, delimiter: ',', format: '%n', precision: 0) %></td>
           </tr>
         </table>
 
-        <h4>注文内容</h4>
+        <h5>注文内容</h5>
         <table class="table">
           <tr>
             <td>商品</td>
@@ -47,12 +47,12 @@
             <td>個数</td>
             <td>小計</td>
           </tr>
-          <% @order_details.each do |order_detail| %>
+          <% @order.order_details.each do |order_detail| %>
             <tr>
               <td><%= order_detail.item.name %></td>
-              <td><%= order_detail.item.price %></td>
+              <td><%= number_to_currency(order_detail.including_tax_price, delimiter: ',', format: '%n', precision: 0) %></td>
               <td><%= order_detail.amount %></td>
-              <td><%= order_detail.amount * order_detail.item.price %></td>
+              <td><%= number_to_currency(order_detail.amount * order_detail.including_tax_price, delimiter: ',', format: '%n', precision: 0) %></td>
             </tr>
           <% end %>
         </table>

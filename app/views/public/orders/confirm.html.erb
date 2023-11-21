@@ -12,6 +12,7 @@
             </tr>
           </thead>
           <tbody>
+
             <% @cart_items.each do |cart_item| %>
               <tr>
                 <td>
@@ -43,8 +44,7 @@
         </tr>
         <tr>
           <td class="font-weight-bold">請求額</td>
-          <!--請求額はinspectをつけたら表示されますが、無しだと空欄になります!後日要調整!!-->
-          <td class="text-right"><%= number_to_currency(@order.total.inspect, unit: "", precision: 0) %></td>
+          <td class="text-right"><%= number_to_currency(@order.total, unit: "", precision: 0) %></td>
 
         </tr>
       </table>
@@ -67,35 +67,22 @@
         <%= @order.postal_code %>
         <%= @order.address %>
         <%= @order.name %>
-
-        <%= form_with url: orders_path, method: :post do |f| %>
-          <%= f.hidden_field :payment_method, value: @order.payment_method %>
-          <%= f.hidden_field :address, value: @order.address %>
-
-          <% if @address == "shipping_address" %>
-            <%= f.hidden_field :shipping_address, value: @order.shipping_address %>
-          <% elsif @address == "new_address" %>
-            <%= f.hidden_field :postal_code, value: @order.postal_code %>
-            <%= f.hidden_field :address, value: @order.address %>
-            <%= f.hidden_field :name, value: @order.name %>
-          <% end %>
-
-        <div class="text-right mb-5">
-          <%= f.submit "注文を確定する", class: "btn btn-success" %>
-        </div>
-        <% end %>
+    </div>
+  </div>
 
 <!--ここは参考サイト2から試しに引用-->
   <div class="row justify-content-center">
     <%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
-        <%= f.hidden_field :customer_id %>
-        <%= f.hidden_field :shipping %>
+        <%#= f.hidden_field :shipping %>
         <%= f.hidden_field :total %>
-        <%= f.hidden_field :payment_method %>
+        <%= f.hidden_field :payment_method, value: @order.payment_method %>
         <%= f.hidden_field :name %>
-        <%= f.hidden_field :shipping_address %>
+        <%= f.hidden_field :address, value: @order.address %>
         <%= f.hidden_field :postal_code %>
-        <%= f.hidden_field :order_status %>
+        <%#= f.hidden_field :order_status %>
+        <div class="text-right mb-5">
+          <%= f.submit "注文を確定する", class: "btn btn-success" %>
+        </div>
     <% end %>
   </div>
 
