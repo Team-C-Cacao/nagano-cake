@@ -1,9 +1,9 @@
 <table class="table">
-  <h4>ジャンル一覧</h4>
+  <h4>ジャンル検索</h4>
   <% genres.each do |genre| %>
     <tbody>
       <tr>
-        <th><%= genre.name %></th>
+        <th><%= link_to genre.name, genre_search_path(genre_id: genre.id), method: :get %></th>
       </tr>
     </tbody>
   <% end %>
