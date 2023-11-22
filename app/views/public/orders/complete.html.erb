@@ -1,8 +1,19 @@
 <div class="container">
-  <div class="row main-row">
-    <!--ポジション未調整-->
-    <div class="col-12 mx-auto">
-      <h2 class="title">ご注文ありがとうございました！</h2>
+  <div class="row thanks-row">
+    <div class="col-12 px-0">
+      <div class="swiper swiper-complete">
+        <div class="swiper-wrapper swiper-swapper-complete">
+          <%= @thanks.each do |item| %>
+            <div class="swiper-slide swiper-slide-complete">
+              <%= image_tag item.image.attached? ? item.image : 'no_image.jpg', class: "thanks-image" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="thanks-content">
+        <h2 class="title thanks-message">ご注文ありがとうございました！</h2>
+      </div>
     </div>
   </div>
 </div>
+<div class="snow"><i class="far fa-snowflake"></i></div>

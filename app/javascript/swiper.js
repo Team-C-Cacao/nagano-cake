@@ -35,4 +35,17 @@ document.addEventListener('turbolinks:load', () => {
       reverseDirection: true,
     },
   });
+
+  const swiper4 = new Swiper('.swiper-complete', {
+    loop: true,
+    effect: "fade", //切り替え方法をfadeに変更
+    fadeEffect: {
+      crossFade: true
+    },
+    autoplay: {
+      delay: 2000, // 3秒間表示
+      disableOnInteraction: false,
+    },
+    speed: 2000, //3秒間で切り替え
+  });
 });
