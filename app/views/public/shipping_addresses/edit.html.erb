@@ -1,10 +1,10 @@
 <div class="container">
-  <div class="row">
+  <div class="row main-row">
     <div class="col-10">
       <div>
         <%= flash[:notice] %>
       </div>
-      <h2 class="mt-4">配送先編集</h2>
+      <h3 class="title">配送先編集</h3>
       <%= render 'public/shared/error_messages', resource: @shipping_address %>
       <%= form_with model: @shipping_address, method: :patch,url: shipping_address_path(@shipping_address), local: true do |f| %>
         <div class="form-row">

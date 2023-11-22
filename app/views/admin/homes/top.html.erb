@@ -1,7 +1,7 @@
 <div class="container">
-  <div class="row">
-    <div class="col-12 mt-4">
-      <h2>注文履歴一覧</h2>
+  <div class="row main-row">
+    <div class="col-10">
+      <h3 class="title">注文履歴一覧</h3>
       <table class='table table-hover table-inverse'>
         <thead>
           <tr>
@@ -13,8 +13,8 @@
           <tbody>
             <% @orders.each do |order| %>
             <tr>
-              <td><%= link_to order.created_at.in_time_zone("Tokyo").strftime("%Y/%m/%d %H:%M"), admin_order_path(order.id) %></td>
-              <td><%= link_to order.customer.last_name + order.customer.first_name, admin_order_detail_path(order.customer.id) %></td>
+              <td><%= link_to order.created_at.in_time_zone("Tokyo").strftime("%Y/%m/%d %H:%M"), admin_order_path(order.id),class: "text-decoration-none" %></td>
+              <td><%= link_to order.customer.last_name + order.customer.first_name, admin_order_detail_path(order.customer.id), class: "text-decoration-none" %></td>
               <td><%= order.order_details.sum(:amount) %></td>
               <td>
                 <% if order.order_status == 0 %>
