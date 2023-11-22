@@ -1,34 +1,39 @@
 <div class="container">
   <div class="row main-row">
     <div class="col-10 mx-auto">
-      <h3 class="col-3 text-center title"><strong>マイページ</strong></h3>
-      <h4 class="mb-4"><strong class="mr-5">登録情報</strong><%= link_to "編集する",infomation_edit_customers_path,class: "btn btn-success font-weight-bold" %></h4>
+      <h3 class="text-left title"><strong>マイページ</strong></h3>
+      <h4 class="mb-4 justify-content-between d-flex" style="margin-left:77px; margin-right:77px;"><strong class="mr-5">登録情報</strong><%= link_to "編集する",infomation_edit_customers_path,class: "btn btn-success" %></h4>
 
       <div class="form-row">
-        <div class="col-3 p-2 border border-dark bg-warning">氏名</div>
+        <div class="col-3 offset-1 p-2 border border-dark table-warning">氏名</div>
         <div class="col-7 p-2 border border-dark bg-white"><%= @customer.last_name + "　" + @customer.first_name %></div>
       </div>
 
       <div class="form-row">
-        <div class="col-3 p-2 border border-dark bg-warning">カナ</div>
+        <div class="col-3 offset-1 p-2 border border-dark table-warning">カナ</div>
         <div class="col-7 p-2 border border-dark bg-white"><%= @customer.last_name_kana + "　" + @customer.first_name_kana %></div>
       </div>
 
       <div class="form-row">
-        <div class="col-3 p-2 border border-dark bg-warning">郵便番号</div>
+        <div class="col-3 offset-1 p-2 border border-dark table-warning">郵便番号</div>
         <div class="col-7 p-2 border border-dark bg-white"><%= @customer.postal_code %></div>
       </div>
       <div class="form-row">
-        <div class="col-3 p-2 border border-dark bg-warning">住所</div>
+        <div class="col-3 offset-1 p-2 border border-dark table-warning">住所</div>
         <div class="col-7 p-2 border border-dark bg-white"><%= @customer.address %></div>
       </div>
 
       <div class="form-row mb-4">
-        <div class="col-3 p-2 border border-dark bg-warning">メールアドレス</div>
+        <div class="col-3 offset-1 p-2 border border-dark table-warning">メールアドレス</div>
         <div class="col-7 p-2 border border-dark bg-white"><%= @customer.email %></div>
       </div>
-      <h4><strong class="mr-5">配送先</strong><%= link_to "一覧を見る",shipping_addresses_path, class: "btn btn-primary font-weight-bold" %></h4>
-      <h4><strong class="mr-4">注文履歴</strong><%= link_to "一覧を見る",orders_path, class: "btn btn-primary font-weight-bold" %></h4>
+
+      <div class="row">
+        <div class="col-5 d-flex justify-content-between mx-auto">
+      <%= link_to "配送先一覧",shipping_addresses_path, class: "btn btn-info" %></h4>
+      <%= link_to "注文履歴一覧",orders_path, class: "btn btn-info" %></h4>
+        </div>
+      </div>
 
     </div>
   </div>
