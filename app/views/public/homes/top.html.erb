@@ -30,7 +30,7 @@
       <div class="row">
         <% @newitems.each do |item| %>
           <div class="col-md-6 col-lg-4">
-            <div class="card mb-4" style="width: auto;">
+            <div class="card mb-4" style="width: auto; background-color: #f7f6f5;">
               <%= image_tag item.image.attached? ? item.image : 'no_image.jpg', class: "about-slide-img" %>
               <div class="card-body">
                 <h5 class="card-title"><%= item.name %></h5>

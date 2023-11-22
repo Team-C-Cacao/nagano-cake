@@ -60,7 +60,7 @@ class Public::OrdersController < ApplicationController
         @order_detail.save #注文商品を保存
         cart_item.destroy #カートの中身を削除
       end #ループ終わり
-      redirect_to orders_path
+      redirect_to complete_orders_path
     else
       render :cart_items, alert: "注文に失敗しました"
     end

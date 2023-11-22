@@ -1,25 +1,28 @@
-<div class="container px-5 px-sm-0">
-  <div class="row mt-4" style="margin-top: 100px;">
-    <div class="col-2">
+<div class="container">
+  <div class="row main-row">
+    <div class="col-2 mx-auto">
       <%= render 'layouts/genres', genres: @genres %>
     </div>
-    <div class="col-md-9 offset-md-1">
+    <div class="col-9 offset-1">
       <!--ジャンル検索結果-->
       <% if @genre.present? %>
-        <h2><%= @genre.name %>一覧（全<%= @items.count %>件）</h2>
+        <h2 class="title"><%= @genre.name %>一覧（全<%= @items.count %>件）</h2>
       <% else %>
       <!--通常商品一覧-->
-        <h2>商品一覧</h2>
+        <h2 class="title">商品一覧</h2>
       <% end %>
         <div class="items d-flex flex-wrap">
             <% @items.each do |item| %>
-              <div class="item_image m-4">
-                <%= link_to item_path(item) do %>
-                  <%= image_tag item.get_item_image(150,110) %><br>
-                  <%= item.name %><br>
-                <% end %>
-                <%= number_to_currency(item.excluding_tax_price, delimiter: ',', format: '¥ %n', precision: 0) %>
-              </div>
+              <%= link_to item_path(item), class:"text-decoration-none text-dark" do %>
+                <div class="card m-3" style="width: auto; background-color: #f7f6f5;">
+                  <%= image_tag item.get_item_image(150,110) %>
+                  <div class="card-body">
+                    <p class="card-text"><%= item.name %><br>
+                      <%= number_to_currency(item.excluding_tax_price, delimiter: ',', format: '¥ %n', precision: 0) %>
+                    </p>
+                  </div>
+                </div>
+              <% end %>
             <% end %>
         </div>
         <div class="row justify-content-center">
