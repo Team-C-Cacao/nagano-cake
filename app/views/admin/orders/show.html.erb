@@ -13,8 +13,8 @@
         </tr>
         <tr>
           <th>配送先</th>
-          <td><%= @order.customer.postal_code %> <%= @order.customer.address %></td>
-          <td><%= @order.customer.last_name + @order .customer.first_name %></td>
+          <td>〒<%= @order.customer.postal_code %> <%= @order.customer.address %><br>
+          <%= @order.customer.last_name + @order .customer.first_name %></td>
         </tr>
         <tr>
           <th>支払い方法</th>
@@ -67,9 +67,10 @@
   </div>
 </div>
 
-<div class="container">
+
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-9"></div>
+    <div class="col-3">
       <table class="table table-hover table-inverse">
         <tr>
           <td class="font-weight-bold">商品合計</td>
@@ -86,4 +87,3 @@
       </table>
     </div>
   </div>
-</div>
