@@ -50,18 +50,39 @@
           <% @order_details.each do |order| %>
             <tr>
               <td><%= order.item.name %></td>
-              <td><%= order.including_tax_price %></td>
+              <td><%= number_to_currency(order.including_tax_price, delimiter: ',', format: '%n', precision: 0) %></td>
               <td><%= order.amount %></td>
-              <td><%= order.including_tax_price %></td>
+              <td><%= number_to_currency(order.including_tax_price * order.amount, delimiter: ',', format: '%n', precision: 0) %></td>
               <td>
-              <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch do |f| %>
-               <%= f.select :making_status, OrderDetail.making_statuses.keys.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]} %> 
+              <%= form_with model: order, url: admin_order_detail_path(order.id), method: :patch do |f| %>
+               <%= f.select :making_status, OrderDetail.making_statuses.keys.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]} %>
                 <%= f.submit '更新', class:"btn btn-success" %>
               <% end %>
               </td>
             </tr>
           <% end %>
         </thead>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <table class="table table-hover table-inverse">
+        <tr>
+          <td class="font-weight-bold">商品合計</td>
+          <td class="text-right"><%= number_to_currency(@order_detail_price, delimiter: ',', format: '%n', precision: 0) %></td>
+        </tr>
+        <tr>
+          <td class="font-weight-bold">送料</td>
+          <td class="text-right"><%= number_to_currency(@order.shipping, delimiter: ',', format: '%n', precision: 0) %></td>  
+        </tr>
+        <tr>
+          <td class="font-weight-bold">請求金額合計</td>
+          <td class="text-right"><%= number_to_currency(@order.total, delimiter: ',', format: '%n', precision: 0) %></td>
+        </tr>
       </table>
     </div>
   </div>
