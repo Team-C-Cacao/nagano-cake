@@ -3,7 +3,7 @@
     <div class="col-10 mx-auto">
       <h2 class="title">注文情報確認</h2>
         <table class='table table-hover table-inverse table-bordered'>
-          <thead>
+          <thead class="table-warning">
             <tr>
               <th>商品名</th>
               <th>単価(税込)</th>
@@ -52,7 +52,7 @@
 
   <div class="row">
     <div class="col-10 mx-auto">
-      <h3 class="title">支払方法</h3>
+      <h5>支払方法</h5>
         <% if @order.payment_method == "credit_card" %>
           クレジットカード
         <% else %>
@@ -60,7 +60,7 @@
         <% end %>
 
 
-      <h3 class="title mt-5">お届け先</h3>
+      <h5 class="mt-5">お届け先</h5>
         <%= @order.postal_code %>
         <%= @order.address %>
         <%= @order.name %>
@@ -75,7 +75,7 @@
         <%= f.hidden_field :address %>
         <%= f.hidden_field :postal_code %>
         <div class="text-right mb-5">
-          <%= f.submit "注文を確定する", class: "btn btn-success" %>
+          <%= f.submit "注文を確定する", class: "btn btn-lg btn-primary mt-5" %>
         </div>
     <% end %>
   </div>
