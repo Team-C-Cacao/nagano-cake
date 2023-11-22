@@ -1,0 +1,77 @@
+<div class="container p-3">
+  <div class="row">
+      <div class="col-md-3 col-md-offset-1">
+        <%#= render 'layouts/genres', genre: @genre %>
+      </div>
+
+      <!-- 検索対象がitemのとき -->
+    <% if @range == "Item" %>
+      <% if @items.present? %>
+        <div class="col-md-8">
+        <h3>"<%= @word %>"一覧（全<%= @items.count %>件）</h3>
+
+        <div class="search-items d-flex flex-wrap">
+          <% @items.each do |item| %>
+            <div class="search-item mr-2">
+              <%= link_to item_path(item.id) do %>
+                <%= image_tag item.get_item_image(150,110)  %><br>
+                <%= item.name %><br>
+              <% end %>
+              <%= number_to_currency(item.excluding_tax_price, delimiter: ',', format: '¥ %n', precision: 0) %>
+            </div>
+          <% end %>
+        </div>
+        <%= paginate @items, theme: 'page' %>
+      </div>
+      <% else %>
+        <div class="col-md-8 d-flex justify-content-center">
+          <h4>商品が見つかりません。</h4>
+        </div>
+      <% end %>
+    <% else %>
+      <% if @customers.present? %>
+      <!--検索対象がcustomerのとき-->
+        <div class="col-md-8">
+          <h3>"<%= @word %>"に一致する会員一覧（全<%= @customers.count %>件）</h3>
+          <div class="search-items d-flex flex-wrap">
+            <div class="search-item mr-2">
+              <table class="table table-hover">
+                  <tr>
+                    <th class="bg-success">会員ID</th>
+                    <th class="bg-success">氏名</th>
+                    <th class="bg-success">メールアドレス</th>
+                    <th class="bg-success">ステータス</th>
+                  </tr>
+                  <% @customers.each do |customer| %>
+                  <tr>
+                    <td><%= customer.id %></td>
+                    <td>
+                      <%= link_to admin_customer_path(customer.id) do %>
+                        <%= customer.last_name %><%= customer.first_name %>
+                      <% end %>
+                    </td>
+                    <td><%= customer.email %></td>
+                    <td>
+                      <% if customer.is_active == true %>
+                        <strong class="text-primary">有効</strong>
+                      <% else %>
+                        <strong class="text-danger">退会</strong>
+                      <% end %>
+                    </td>
+                  </tr>
+                  <% end %>
+                </table>
+            </div>
+          </div>
+        </div>
+        <div class="row mx-auto justify-content-center">
+          <%= paginate @customers, theme: 'page' %>
+        </div>
+      <% else %>
+        <div class="cil-md-8 d-flex justify-content-center">
+          <h4>会員が見つかりません。</h4>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

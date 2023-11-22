@@ -1,0 +1,15 @@
+<%= form_with url: search_path, method: :get, local: true, class: 'form-inline' do |f| %>
+  <div class="form-group">
+    <%= f.text_field :word, placeholder: "検索...", class: 'form-control' %>
+  </div>
+
+  <% if admin_signed_in? %>
+    <div class="form-group">
+      <%= f.select :range, options_for_select([["商品", "Item"], ["会員", "Customer"]], selected: "Item"), {}, class: 'form-control ml-3' %>
+    </div>
+  <% else %>
+    <%= f.hidden_field :range, value: "Item" %>
+  <% end %>
+
+  <%= f.submit "検索", class: 'btn btn-warning ml-3 form-control' %>
+<% end %>
