@@ -1,7 +1,7 @@
 <div class="container">
-  <div class="row">
-    <div class="col-10 mx-auto mt-5">
-      <h2 class="d-flex justify-content-between mb-5 mr-3">
+  <div class="row main-row">
+    <div class="col-12 mx-auto">
+      <h2 class="d-flex justify-content-between title">
         商品一覧
         <%= link_to new_admin_item_path, class: "small" do %>
           <i class="fa-solid fa-plus"></i>
@@ -35,6 +35,9 @@
           <% end %>
         </tbody>
       </table>
+      <div class="row justify-content-center">
+        <%= paginate @items %>
+      </div>
     </div>
   </div>
 </div>

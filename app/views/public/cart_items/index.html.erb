@@ -1,6 +1,6 @@
 <div class="container">
-  <div class="row justify-content-between">
-    <h2>ショッピングカート</h2>
+  <div class="row justify-content-between main-row">
+    <h2 class="title">ショッピングカート</h2>
     <h2><%= link_to 'カートを空にする', destroy_all_cart_items_path, method: :delete, class: "btn btn-danger", data: { confirm: 'カート内の全商品を削除しますか？' } %></h2>
   </div>
   <div class="row">
