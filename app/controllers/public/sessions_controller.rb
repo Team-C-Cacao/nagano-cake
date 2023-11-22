@@ -25,7 +25,7 @@ class Public::SessionsController < Devise::SessionsController
   def customer_state
    customer = Customer.find_by(email: params[:customer][:email])
    return if customer.nil?
-   return unless customer.valid_password?(params[:customer][:password])
+   return unless customer.valid_password?(params[:customer][:password])# 【処理内容3】 取得したアカウントのパスワードと入力されたパスワードが一致していない場合、このメソッドを終了する
    unless customer.is_active == true
      flash[:alert] = "すでに退会しています。"
       redirect_to new_customer_registration_path
