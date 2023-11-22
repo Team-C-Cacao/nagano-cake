@@ -122,17 +122,18 @@ body {
 .thanks-row {
   margin-top: 100px;
 }
-.snow {
-  /*雪の色*/
-  color: snow;
-  /*雪の大きさ*/
-  font-size: 10px;
-  /*初期位置*/
-  position: fixed;
-  top: -5%;
-  /*雪を適当な幅で降らせる*/
-  text-shadow:
-  5vw   -100px 2px,
+.thanks-message {
+  text-shadow: 0px 0px 10px white;
+}
+
+// snow animation
+.snow1 {
+  color: snow; //雪の色
+  font-size: 10px; //雪の大きさ
+  position: fixed; //ポジション設定
+  top: -5%; //スタートは画面外から
+  text-shadow: //テキストにシャドー追加
+  5vw   -100px 2px, //水平方向、垂直方向、ぼかしの程度
   10vw  -400px 3px,
   20vw  -500px 4px,
   30vw  -580px 1px,
@@ -143,28 +144,103 @@ body {
   78vw  -220px 4px,
   86vw  -320px 9px,
   94vw  -170px 7px;
-  /*雪アニメーション1*/
-  animation: roll 5s linear infinite;
+  animation: roll 10s linear infinite;
 }
-  /*2つめの雪アニメーション*/
-.snow2nd{animation: anim 8s linear infinite;}
+.snow2 {
+  color: snow;
+  font-size: 10px;
+  position: fixed;
+  top: -5%;
+  text-shadow:
+  7vw   -120px 3px,
+  12vw  -350px 4px,
+  22vw  -450px 5px,
+  28vw  -550px 1px,
+  36vw  -270px 2px,
+  45vw  -320px 6px,
+  54vw  -160px 2px,
+  68vw  -190px 0,
+  74vw  -240px 5px,
+  82vw  -300px 10px,
+  92vw  -150px 8px;
+  animation: roll 10s linear 2s infinite;
+}
+.snow3 {
+  color: snow;
+  font-size: 10px;
+  position: fixed;
+  top: -5%;
+  text-shadow:
+  9vw   -110px 2px,
+  15vw  -370px 2px,
+  25vw  -480px 3px,
+  33vw  -520px 1px,
+  38vw  -260px 3px,
+  48vw  -310px 4px,
+  57vw  -140px 1px,
+  69vw  -160px 0,
+  77vw  -200px 3px,
+  89vw  -280px 7px,
+  95vw  -130px 6px;
+  animation: roll 10s linear 4s infinite;
+}
+.snow4 {
+  color: snow;
+  font-size: 10px;
+  position: fixed;
+  top: -5%;
+  text-shadow:
+  8vw   -130px 1px,
+  17vw  -360px 3px,
+  27vw  -470px 4px,
+  31vw  -530px 1px,
+  40vw  -280px 3px,
+  50vw  -330px 5px,
+  60vw  -170px 1px,
+  72vw  -170px 1px,
+  79vw  -210px 4px,
+  85vw  -290px 8px,
+  96vw  -140px 7px;
+  animation: roll 10s linear 6s infinite;
+}
+.snow5 {
+  color: snow;
+  font-size: 10px;
+  position: fixed;
+  top: -5%;
+  text-shadow:
+  6vw   -115px 2px,
+  13vw  -360px 3px,
+  21vw  -490px 2px,
+  29vw  -540px 1px,
+  37vw  -275px 2px,
+  46vw  -335px 5px,
+  55vw  -155px 1px,
+  67vw  -175px 1px,
+  75vw  -205px 3px,
+  83vw  -310px 9px,
+  91vw  -135px 5px;
+  animation: roll 10s linear 8s infinite;
+}
 
 @keyframes roll {
     0% {transform:rotate(0deg);}
    90% {opacity:1;}
    100% {transform:rotate(20deg);top:100%;opacity:0;}
 }
-@keyframes anim {
-  100% {color:transparent;top:150%;}
-}
 
-.snow {
+.snow1 {
   z-index: 5;
 }
-.snow2nd {
+.snow2 {
   z-index: 5;
 }
-
-.thanks-message {
-  text-shadow: 0px 0px 10px white;
+.snow3 {
+  z-index: 5;
+}
+.snow4 {
+  z-index: 5;
+}
+.snow5 {
+  z-index: 5;
 }
