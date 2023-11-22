@@ -1,70 +1,70 @@
 <div class="container">
-  <div class="row mb-5">
+  <div class="row main-row">
     <div class="col-12">
-   <h4 class="col-3 mt-3 mb-5 text-center"><strong>会員情報編集</strong></h4>
+     <h4 class="col-3 text-center title"><strong>会員情報編集</strong></h4>
 
-   <%= render "public/shared/error_messages", resource: @customer %>
+     <%= render "public/shared/error_messages", resource: @customer %>
 
-    <%= form_with model: @customer, url: infomation_edit_customers_path, method: :patch do |f| %>
+     <%= form_with model: @customer, url: infomation_edit_customers_path, method: :patch do |f| %>
 
-  <div class="form-row">
-    <span class="form-group col-3">氏名</span>
-    <div class="form-group col-3">
-      <label for="last_name">(姓)</label>
-      <%= f.text_field :last_name, class: "form-control"%>
-    </div>
-    <div class="form-group col-3">
-      <label for="first_name">(名)</label>
-      <%= f.text_field :first_name, class: "form-control"%>
+      <div class="form-row">
+        <span class="form-group col-3">氏名</span>
+        <div class="form-group col-3">
+          <label for="last_name">(姓)</label>
+          <%= f.text_field :last_name, class: "form-control"%>
+        </div>
+        <div class="form-group col-3">
+          <label for="first_name">(名)</label>
+          <%= f.text_field :first_name, class: "form-control"%>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <span class="form-group col-3">フリガナ</span>
+        <div class="form-group col-3">
+          <label for="last_name_kana">(セイ)</label>
+          <%= f.text_field :last_name_kana, class: "form-control"%>
+        </div>
+        <div class="form-group col-md-3">
+          <label for="first_name_kana">(メイ)</label>
+          <%= f.text_field :first_name_kana, class: "form-control"%>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <span class="form-group col-3">郵便番号(ハイフンなし)</span>
+        <div class="form-group col-3">
+         <%= f.text_field :postal_code, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <span class="form-group col-3">住所</span>
+        <div class="form-group col-6">
+         <%= f.text_field :address, class: "form-control" %>
+        </div>
+      </div>
+
+
+      <div class="form-row">
+        <span class="form-group col-3">電話番号</span>
+        <div class="form-group col-3">
+         <%= f.text_field :phone_number, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <span class="form-group col-3">メールアドレス</span>
+        <div class="form-group col-3">
+          <%= f.text_field :email, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="actions form-group justify-content:center; d-flex">
+        <%= f.submit "編集内容を保存",class: "btn btn-success d-grid gap-2 col-5 mx-auto mb-3" %>
+        <%= link_to "退会する",check_customers_path, class: "btn btn-danger mb-3" %>
+      </div>
+      <% end %>
     </div>
   </div>
-
-  <div class="form-row">
-    <span class="form-group col-3">フリガナ</span>
-    <div class="form-group col-3">
-      <label for="last_name_kana">(セイ)</label>
-      <%= f.text_field :last_name_kana, class: "form-control"%>
-    </div>
-    <div class="form-group col-md-3">
-      <label for="first_name_kana">(メイ)</label>
-      <%= f.text_field :first_name_kana, class: "form-control"%>
-    </div>
-  </div>
-
-  <div class="form-row">
-    <span class="form-group col-3">郵便番号(ハイフンなし)</span>
-    <div class="form-group col-3">
-     <%= f.text_field :postal_code, class: "form-control" %>
-    </div>
-  </div>
-
-  <div class="form-row">
-    <span class="form-group col-3">住所</span>
-    <div class="form-group col-6">
-     <%= f.text_field :address, class: "form-control" %>
-    </div>
-  </div>
-
-
-  <div class="form-row">
-    <span class="form-group col-3">電話番号</span>
-    <div class="form-group col-3">
-     <%= f.text_field :phone_number, class: "form-control" %>
-    </div>
-  </div>
-
-  <div class="form-row">
-    <span class="form-group col-3">メールアドレス</span>
-    <div class="form-group col-3">
-      <%= f.text_field :email, class: "form-control" %>
-    </div>
-  </div>
-
-  <div class="actions form-group justify-content:center; d-flex">
-    <%= f.submit "編集内容を保存",class: "btn btn-success d-grid gap-2 col-5 mx-auto mb-3" %>
-    <%= link_to "退会する",check_customers_path, class: "btn btn-danger mb-3" %>
-  </div>
-<% end %>
-  </div>
- </div>
 </div>

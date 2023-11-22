@@ -1,11 +1,11 @@
 <div class="container">
-  <div class="row mb-5">
-    <div class="col-12">
-      <div class="col-7 mt-3 text-center">
-     <span style= "font-size: 30px;"><%= @customer.last_name %><%= @customer.first_name %></span><span style= "font-size: 20px;">さんの</span><span style= "font-size: 30px;">注文履歴</span>
-     </div>
+  <div class="row main-row">
+    <div class="col-10 mx-auto">
+      <div class="col-7 text-center title">
+       <span style= "font-size: 30px;"><%= @customer.last_name %><%= @customer.first_name %></span><span style= "font-size: 20px;">さんの</span><span style= "font-size: 30px;">注文履歴</span>
+      </div>
 
-     <% if @orders.present? %>
+      <% if @orders.present? %>
 
      <table class="table table-hover mt-3">
      <tr>
@@ -16,7 +16,7 @@
 
       <% @orders.each do |order| %>
       <tr>
-        <td><%= link_to order.created_at.in_time_zone("Tokyo").strftime("%Y/%m/%d %H:%M:%S"),admin_order_path(order.id) %></td>
+        <td><%= link_to order.created_at.in_time_zone("Tokyo").strftime("%Y/%m/%d %H:%M:%S"),admin_order_path(order.id),class: "text-decoration-none" %></td>
         <td><%= order.order_details.sum(:amount) %></td>
         <td>
           <% if order.order_status.to_sym == :waiting_for_payment %>
@@ -30,7 +30,7 @@
           <% elsif order.order_status.to_sym == :sent %>
           発送済み
           <% end %>
-          </td>
+        </td>
       </tr>
       <% end %>
      <% else %>
@@ -38,6 +38,6 @@
      <% end %>
 
      </table>
-     </div>
-   </div>
+    </div>
   </div>
+</div>

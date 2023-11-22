@@ -1,88 +1,90 @@
 <div class="container">
-  <div class="row mb-5">
+  <div class="row main-row">
     <div class="col-12">
-   <h4 class="col-2 mt-3 mb-4 text-center bg-success"><strong>新規会員登録</strong></h4>
-    <%= form_with model: @customer, url: customer_registration_path do |f| %>
+     <h4 class="col-2 text-center title"><strong>新規会員登録</strong></h4>
+     <%= form_with model: @customer, url: customer_registration_path do |f| %>
 
-  <%= render "public/shared/error_messages", resource: resource %>
+     <%= render "public/shared/error_messages", resource: resource %>
 
-  <div class="form-row">
-    <span class="form-group col-3 pt-4">名前</span>
-    <div class="form-group col-3">
-      <label for="last_name">(姓)</label>
-      <%= f.text_field :last_name, class: "form-control"%>
-    </div>
-    <div class="form-group col-3">
-      <label for="first_name">(名)</label>
-      <%= f.text_field :first_name, class: "form-control"%>
+      <div class="form-row">
+       <span class="form-group col-3 pt-4">名前</span>
+        <div class="form-group col-3">
+         <label for="last_name">(姓)</label>
+         <%= f.text_field :last_name, class: "form-control"%>
+        </div>
+        <div class="form-group col-3">
+         <label for="first_name">(名)</label>
+         <%= f.text_field :first_name, class: "form-control"%>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <span class="form-group col-3 pt-4">フリガナ</span>
+        <div class="form-group col-3">
+          <label for="last_name_kana">(セイ)</label>
+          <%= f.text_field :last_name_kana, class: "form-control"%>
+        </div>
+        <div class="form-group col-md-3">
+          <label for="first_name_kana">(メイ)</label>
+          <%= f.text_field :first_name_kana, class: "form-control"%>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <span class="form-group col-3">メールアドレス</span>
+        <div class="form-group col-3">
+          <%= f.text_field :email, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <span class="form-group col-3">郵便番号(ハイフンなし)</span>
+        <div class="form-group col-3">
+         <%= f.text_field :postal_code, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <span class="form-group col-3">住所</span>
+        <div class="form-group col-6">
+         <%= f.text_field :address, class: "form-control" %>
+        </div>
+      </div>
+
+
+      <div class="form-row">
+        <span class="form-group col-3">電話番号</span>
+        <div class="form-group col-3">
+         <%= f.text_field :phone_number, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <span class="form-group col-3">パスワード(6文字以上)</span>
+        <div class="form-group col-3">
+         <%= f.password_field :password, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <span class="form-group col-3">パスワード(確認用)</span>
+        <div class="form-group col-3">
+         <%= f.password_field :password_confirmation, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="actions form-group justify-content:center; d-flex">
+        <%= f.submit "新規登録",class: "btn btn-success d-grid gap-2 col-6 mx-auto mb-3" %>
+      </div>
+      <% end %>
+
+      <div class="text-center">
+        <h5><strong>既に登録済みの方</strong></h5>
+        <%= render "public/shared/links" %>
+      </div>
+
     </div>
   </div>
-
-  <div class="form-row">
-    <span class="form-group col-3 pt-4">フリガナ</span>
-    <div class="form-group col-3">
-      <label for="last_name_kana">(セイ)</label>
-      <%= f.text_field :last_name_kana, class: "form-control"%>
-    </div>
-    <div class="form-group col-md-3">
-      <label for="first_name_kana">(メイ)</label>
-      <%= f.text_field :first_name_kana, class: "form-control"%>
-    </div>
-  </div>
-
-  <div class="form-row">
-    <span class="form-group col-3">メールアドレス</span>
-    <div class="form-group col-3">
-      <%= f.text_field :email, class: "form-control" %>
-    </div>
-  </div>
-
-  <div class="form-row">
-    <span class="form-group col-3">郵便番号(ハイフンなし)</span>
-    <div class="form-group col-3">
-     <%= f.text_field :postal_code, class: "form-control" %>
-    </div>
-  </div>
-
-  <div class="form-row">
-    <span class="form-group col-3">住所</span>
-    <div class="form-group col-6">
-     <%= f.text_field :address, class: "form-control" %>
-    </div>
-  </div>
-
-
-  <div class="form-row">
-    <span class="form-group col-3">電話番号</span>
-    <div class="form-group col-3">
-     <%= f.text_field :phone_number, class: "form-control" %>
-    </div>
-  </div>
-
-  <div class="form-row">
-    <span class="form-group col-3">パスワード(6文字以上)</span>
-    <div class="form-group col-3">
-     <%= f.password_field :password, class: "form-control" %>
-    </div>
-  </div>
-
-  <div class="form-row">
-    <span class="form-group col-3">パスワード(確認用)</span>
-    <div class="form-group col-3">
-     <%= f.password_field :password_confirmation, class: "form-control" %>
-    </div>
-  </div>
-
-  <div class="actions form-group justify-content:center; d-flex">
-    <%= f.submit "新規登録",class: "btn btn-success d-grid gap-2 col-6 mx-auto mb-3" %>
-  </div>
-<% end %>
-   <div class="text-center">
-    <h5><strong>既に登録済みの方</strong></h5>
-    <%= render "public/shared/links" %>
-   </div>
-  </div>
- </div>
 </div>
 
 

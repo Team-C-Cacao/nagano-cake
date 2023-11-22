@@ -1,50 +1,50 @@
-    <div class="container">
-      <div class="row mb-5">
-        <div class="col-12">
-          <div class="col-7 mt-3 text-center">
-         <span style= "font-size: 30px;"><%= @user.last_name %><%= @user.first_name %></span><span style= "font-size: 20px;">さんの</span><span style= "font-size: 30px;">会員情報編集</span>
-         </div>
+<div class="container">
+  <div class="row main-row">
+    <div class="col-12">
+      <div class="col-7 text-center title">
+       <span style= "font-size: 30px;"><%= @user.last_name %><%= @user.first_name %></span><span style= "font-size: 20px;">さんの</span><span style= "font-size: 30px;">会員情報編集</span>
+      </div>
 
-    　 <%= form_with model: @customer, url: admin_customer_path(@customer),method: :patch do |f| %>
+　     <%= form_with model: @customer, url: admin_customer_path(@customer),method: :patch do |f| %>
 
-    　 <%= render "public/shared/error_messages", resource: @customer %>
+　     <%= render "public/shared/error_messages", resource: @customer %>
 
-    　 <div class="form-row">
-        <span class="form-group col-3">会員ID</span>
+  　   <div class="form-row">
+       <span class="form-group col-3">会員ID</span>
         <div class="form-group col-6">
-         <strong><%= @customer.id %></strong>
-        </div>
-      </div>
-
-        <div class="form-row">
-         <span class="form-group col-3 pt-4">氏名</span>
-          <div class="form-group col-3">
-           <label for="last_name">(姓)</label>
-            <%= f.text_field :last_name, class: "form-control"%>
-          </div>
-         <div class="form-group col-3">
-          <label for="first_name">(名)</label>
-          <%= f.text_field :first_name, class: "form-control"%>
-         </div>
-        </div>
-
-      <div class="form-row">
-        <span class="form-group col-3 pt-4">フリガナ</span>
-         <div class="form-group col-3">
-          <label for="last_name_kana">(セイ)</label>
-          <%= f.text_field :last_name_kana, class: "form-control"%>
-         </div>
-        <div class="form-group col-md-3">
-          <label for="first_name_kana">(メイ)</label>
-          <%= f.text_field :first_name_kana, class: "form-control"%>
+        <strong><%= @customer.id %></strong>
         </div>
       </div>
 
       <div class="form-row">
-        <span class="form-group col-3">郵便番号</span>
+       <span class="form-group col-3 pt-4">氏名</span>
         <div class="form-group col-3">
-         <%= f.text_field :postal_code, class: "form-control" %>
+         <label for="last_name">(姓)</label>
+          <%= f.text_field :last_name, class: "form-control"%>
         </div>
+        <div class="form-group col-3">
+        <label for="first_name">(名)</label>
+        <%= f.text_field :first_name, class: "form-control"%>
+        </div>
+      </div>
+
+      <div class="form-row">
+       <span class="form-group col-3 pt-4">フリガナ</span>
+       <div class="form-group col-3">
+        <label for="last_name_kana">(セイ)</label>
+        <%= f.text_field :last_name_kana, class: "form-control"%>
+       </div>
+       <div class="form-group col-md-3">
+        <label for="first_name_kana">(メイ)</label>
+        <%= f.text_field :first_name_kana, class: "form-control"%>
+       </div>
+      </div>
+
+      <div class="form-row">
+       <span class="form-group col-3">郵便番号</span>
+       <div class="form-group col-3">
+       <%= f.text_field :postal_code, class: "form-control" %>
+       </div>
       </div>
 
       <div class="form-row">
@@ -84,6 +84,6 @@
         <%= f.submit "変更を保存",class: "btn btn-success d-grid gap-2 col-6 mx-auto mb-3" %>
       </div>
       <% end %>
-     </div>
     </div>
-   </div>
+  </div>
+</div>

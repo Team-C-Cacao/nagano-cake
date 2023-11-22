@@ -1,11 +1,7 @@
 <div class="container">
- <div class="row">
+ <div class="row main-row">
    <div class="col-12">
-    <h2 class="col-5 mt-3 mb-3">会員一覧</h2>
-
-    <div class="row mx-auto justify-content-center">
-     <%= paginate @customers,theme: 'page' %>
-    </div>
+    <h2 class="col-5 title">会員一覧</h2>
 
     <table class="table table-hover">
      <tr>
@@ -14,11 +10,12 @@
        <th class="bg-success">メールアドレス</th>
        <th class="bg-success">ステータス</th>
      </tr>
+
      <% @customers.each do |customer| %>
      <tr>
        <td><%= customer.id %></td>
        <td>
-         <%= link_to admin_customer_path(customer.id) do %>
+         <%= link_to admin_customer_path(customer.id),class: "text-decoration-none" do %>
          <%= customer.last_name %><%= customer.first_name %>
          <% end %>
        </td>
@@ -33,9 +30,11 @@
      </tr>
      <% end %>
     </table>
+
     <div class="row mx-auto justify-content-center">
      <%= paginate @customers,theme: 'page' %>
     </div>
+
   </div>
  </div>
 </div>
