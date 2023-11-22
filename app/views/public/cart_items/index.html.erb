@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row">
+  <div class="row justify-content-between">
     <h2>ショッピングカート</h2>
     <h2><%= link_to 'カートを空にする', destroy_all_cart_items_path, method: :delete, class: "btn btn-danger", data: { confirm: 'カート内の全商品を削除しますか？' } %></h2>
   </div>
@@ -18,7 +18,7 @@
         <tbody>
           <% @cart_items.each do |cart_item| %>
             <tr>
-              <td><%= cart_item.item.name %></td>
+              <td><%= image_tag cart_item.item.get_item_image(70,70) %>&nbsp;<%= cart_item.item.name %></td>
               <td><%= number_to_currency(cart_item.tax_included_price, unit: "", precision: 0) %></td>
               <td>
                 <%= form_with model: cart_item, method: :patch do |f| %>
