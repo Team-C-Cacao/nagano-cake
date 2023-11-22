@@ -1,26 +1,26 @@
 <div class="container">
-  <div class="row">
+  <div class="row main-row">
     <div class="col-12 mx-auto">
-     <h4 class="col-2 mt-3 mb-5 text-center bg-info text-light"><strong>ログイン</strong></h4>
-      <strong class="col-3 text-center bg-info text-light">会員の方はこちらからログイン</strong>
+     <h4 class="col-2 text-center title"><strong>ログイン</strong></h4>
+      <strong class="col-3 text-center">会員の方はこちらからログイン</strong>
 
       <%= form_with model: @customer, url: customer_session_path do |f| %>
 
       <%= render "public/shared/error_messages", resource: resource %>
 
      <div class="form-row mt-4">
-    <span class="form-group col-3">メールアドレス</span>
-     <div class="form-group col-6">
-      <%= f.text_field :email, class: "form-control" %>
+      <span class="form-group col-3">メールアドレス</span>
+      <div class="form-group col-6">
+       <%= f.text_field :email, class: "form-control" %>
+      </div>
      </div>
-    </div>
 
      <div class="form-row">
-    <span class="form-group col-3">パスワード(6文字以上)</span>
-    <div class="form-group col-6">
-     <%= f.password_field :password, class: "form-control" %>
-    </div>
-  </div>
+      <span class="form-group col-3">パスワード(6文字以上)</span>
+       <div class="form-group col-6">
+        <%= f.password_field :password, class: "form-control" %>
+       </div>
+     </div>
      <div class="actions form-group mt-5 justify-content:center; d-flex">
      <%= f.submit "ログイン",class: "btn btn-info text-light d-grid gap-2 col-4 mx-auto mb-3" %>
      </div>
@@ -29,7 +29,7 @@
     <div class="text-center">
     <strong>会員登録がお済みでない方</strong><br>
      <%= render "public/shared/links" %>
-     </div>
+    </div>
   </div>
  </div>
 </div>
