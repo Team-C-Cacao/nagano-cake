@@ -1,9 +1,11 @@
+<!--注文履歴詳細を表示-->
 <div class="container">
   <div class="row main-row">
     <div class="col-10">
       <h3 class="title">注文履歴詳細</h3>
       <table class="table table-borderless">
         <tr>
+          <!--各注文詳細の項目-->
           <th>購入者</th>
           <td><%= @order.customer.last_name + @order.customer.first_name %></td>
         </tr>
@@ -23,6 +25,7 @@
         <tr>
           <th>注文ステータス</th>
           <td>
+            <!--注文ステータスの更新用のフォーム-->
           <%= form_with model: @order, url: admin_order_path, method: :patch do |f| %>
               <%= f.select :order_status, Order.order_statuses.keys.map {|k| [I18n.t("enums.order.order_status.#{k}"), k]} %>
             <%= f.submit "更新" , class: "btn btn-success" %>
@@ -34,11 +37,12 @@
   </div>
 </div>
 
+<!--商品一覧の表示-->
 <div class="container">
   <div class="row">
     <div class="col-10">
       <table class="table table-bordered">
-        <thead>
+        <thead class="table-secondary">
           <tr>
             <th>商品名</th>
             <th>単価（税込）</th>
@@ -46,14 +50,20 @@
             <th>小計</th>
             <th>製作ステータス</th>
           </tr>
-
+        </thead>
+        <!--各注文詳細に対するループ-->
           <% @order_details.each do |order| %>
             <tr>
+              <!--商品名の表示-->
               <td><%= order.item.name %></td>
-              <td><%= number_to_currency(order.including_tax_price, delimiter: ',', format: '%n', precision: 0) %></td>
+              <!--単価の表示-->
+              <td>¥<%= number_to_currency(order.including_tax_price, delimiter: ',', format: '%n', precision: 0) %></td>
+              <!--数量の表示-->
               <td><%= order.amount %></td>
-              <td><%= number_to_currency(order.including_tax_price * order.amount, delimiter: ',', format: '%n', precision: 0) %></td>
+              <!--小計の表示-->
+              <td>¥<%= number_to_currency(order.including_tax_price * order.amount, delimiter: ',', format: '%n', precision: 0) %></td>
               <td>
+                <!--制作ステータスの更新用のフォーム-->
               <%= form_with model: order, url: admin_order_detail_path(order.id), method: :patch do |f| %>
                <%= f.select :making_status, OrderDetail.making_statuses.keys.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]} %>
                 <%= f.submit '更新', class:"btn btn-success" %>
@@ -61,28 +71,28 @@
               </td>
             </tr>
           <% end %>
-        </thead>
       </table>
     </div>
   </div>
 </div>
 
-
+<!--合計金額の表示-->
   <div class="row">
     <div class="col-9"></div>
     <div class="col-2">
+      <!--合計金額を表示するテーブル-->
       <table class="table table-hover table-inverse">
         <tr>
           <td class="font-weight-bold">商品合計</td>
-          <td class="text-right"><%= number_to_currency(@order_detail_price, delimiter: ',', format: '%n', precision: 0) %></td>
+          <td class="text-right">¥<%= number_to_currency(@order_detail_price, delimiter: ',', format: '%n', precision: 0) %></td>
         </tr>
         <tr>
           <td class="font-weight-bold">送料</td>
-          <td class="text-right"><%= number_to_currency(@order.shipping, delimiter: ',', format: '%n', precision: 0) %></td>
+          <td class="text-right">¥<%= number_to_currency(@order.shipping, delimiter: ',', format: '%n', precision: 0) %></td>
         </tr>
         <tr>
           <td class="font-weight-bold">請求金額合計</td>
-          <td class="text-right"><%= number_to_currency(@order.total, delimiter: ',', format: '%n', precision: 0) %></td>
+          <td class="text-right">¥<%= number_to_currency(@order.total, delimiter: ',', format: '%n', precision: 0) %></td>
         </tr>
       </table>
     </div>

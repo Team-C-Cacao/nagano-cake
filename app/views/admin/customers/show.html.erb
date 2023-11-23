@@ -1,57 +1,58 @@
 <div class="container">
  <div class="row main-row">
   <div class="col-10 mx-auto">
-    <div class="col-7 text-center title">
-    <span style= "font-size: 30px;"><%= @customer.last_name %><%= @customer.first_name %></span><span style= "font-size: 20px;">さんの</span><span style= "font-size: 30px;">会員詳細</span>
+    <div class="col-10 text-center title">
+    <span><%= @customer.last_name %><%= @customer.first_name %></span><span style= "font-size: 30px;">さんの</span><span>会員詳細</span>
     </div>
 
 
     <div class="row mt-3 mx-auto justify-content-center">
-      <div class="col-3 p-2 border border-dark bg-warning">会員ID</div>
+      <div class="col-3 p-2 border border-dark table-warning">会員ID</div>
       <div class="col-5 p-2 border border-dark bg-white"><%= @customer.id %></div>
     </div>
 
     <div class="row mx-auto justify-content-center">
-      <div class="col-3 p-2 border border-dark bg-warning">氏名</div>
+      <div class="col-3 p-2 border border-dark table-warning">氏名</div>
       <div class="col-5 p-2 border border-dark bg-white"><%= @customer.last_name %>　<%= @customer.first_name %></div>
     </div>
 
     <div class="row mx-auto justify-content-center">
-      <div class="col-3 p-2 border border-dark bg-warning">フリガナ</div>
+      <div class="col-3 p-2 border border-dark table-warning">フリガナ</div>
       <div class="col-5 p-2 border border-dark bg-white"><%= @customer.last_name_kana %>　<%= @customer.first_name_kana %></div>
     </div>
 
     <div class="row mx-auto justify-content-center">
-      <div class="col-3 p-2 border border-dark bg-warning">郵便番号</div>
+      <div class="col-3 p-2 border border-dark table-warning">郵便番号</div>
       <div class="col-5 p-2 border border-dark bg-white"><%= @customer.postal_code %></div>
     </div>
 
     <div class="row mx-auto justify-content-center">
-      <div class="col-3 p-2 border border-dark bg-warning">住所</div>
+      <div class="col-3 p-2 border border-dark table-warning">住所</div>
       <div class="col-5 p-2 border border-dark bg-white"><%= @customer.address %></div>
     </div>
 
     <div class="row mx-auto justify-content-center">
-      <div class="col-3 p-2 border border-dark bg-warning">電話番号</div>
+      <div class="col-3 p-2 border border-dark table-warning">電話番号</div>
       <div class="col-5 p-2 border border-dark bg-white"><%= @customer.phone_number %></div>
     </div>
 
     <div class="row mx-auto justify-content-center">
-      <div class="col-3 p-2 border border-dark bg-warning">メールアドレス</div>
+      <div class="col-3 p-2 border border-dark table-warning">メールアドレス</div>
       <div class="col-5 p-2 border border-dark bg-white"><%= @customer.email %></div>
     </div>
 
     <div class="row mx-auto justify-content-center">
-      <div class="col-3 p-2 border border-dark bg-warning">会員ステータス</div>
+      <div class="col-3 p-2 border border-dark table-warning">会員ステータス</div>
       <div class="col-5 p-2 border border-dark bg-white">
+        <!--会員ステータスの値に応じて条件分岐-->
         <% if @customer.is_active == true %>
-        <strong class="text-primary">有効</strong>
+        <strong style="color: #1a8066;">有効</strong>
         <% else %>
         <strong class="text-danger">退会</strong>
         <% end %>
       </div>
     </div>
-    <div class="row mx-auto justify-content-center">
+    <div class="row mt-4 mx-auto justify-content-center">
     <%= link_to "編集する",edit_admin_customer_path(@customer),class: "btn btn-success mt-3 mr-5" %>
     <%= link_to "注文履歴一覧を見る",admin_order_detail_path(@customer),class: "btn btn-primary mt-3 ml-5" %>
     </div>

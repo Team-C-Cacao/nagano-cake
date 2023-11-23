@@ -8,16 +8,16 @@ ja:
       order_status:
         waiting_for_payment: "入金待ち"
         payment_confirmation: "入金確認"
-        in_production: "制作中"
+        in_production: "製作中"
         preparation_for_shipping: "発送準備中"
         sent: "発送済み"
 
     order_detail:
       making_status:
         unable_to_start: "着手不可"
-        waiting_for_production: "制作待ち"
-        in_production: "制作中"
-        production_completed: "制作完了"
+        waiting_for_production: "製作待ち"
+        in_production: "製作中"
+        production_completed: "製作完了"
 
   activerecord:
     errors:

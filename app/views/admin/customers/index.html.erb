@@ -4,12 +4,14 @@
     <h2 class="col-5 title">会員一覧</h2>
 
     <table class="table table-hover">
+     <thead class="table-secondary">
      <tr>
-       <th class="bg-success">会員ID</th>
-       <th class="bg-success">氏名</th>
-       <th class="bg-success">メールアドレス</th>
-       <th class="bg-success">ステータス</th>
+       <th>会員ID</th>
+       <th>氏名</th>
+       <th>メールアドレス</th>
+       <th>ステータス</th>
      </tr>
+     </thead>
 
      <% @customers.each do |customer| %>
      <tr>
@@ -20,11 +22,11 @@
          <% end %>
        </td>
        <td><%= customer.email %></td>
-       <td>
+       <td><!--会員ステータスに応じて条件分岐-->
          <% if customer.is_active == true %>
-         <strong class="text-primary">有効</strong>
+         <span style="color: #1a8066;">有効</span>
          <% else %>
-         <strong class="text-danger">退会</strong>
+         <span class="text-danger">退会</span>
          <% end %>
        </td>
      </tr>

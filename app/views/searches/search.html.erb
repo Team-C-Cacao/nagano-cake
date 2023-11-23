@@ -1,46 +1,57 @@
-<div class="container p-3">
-  <div class="row">
-      <div class="col-md-3 col-md-offset-1">
-        <%#= render 'layouts/genres', genre: @genre %>
+<div class="container">
+  <div class="row main-row">
+      <div class="col-2">
+        <%= render 'layouts/genres', genres: @genres %>
       </div>
 
       <!-- 検索対象がitemのとき -->
     <% if @range == "Item" %>
       <% if @items.present? %>
-        <div class="col-md-8">
-        <h3>"<%= @word %>"一覧（全<%= @items.count %>件）</h3>
-
-        <div class="search-items d-flex flex-wrap">
-          <% @items.each do |item| %>
-            <div class="search-item mr-2">
-              <%= link_to item_path(item.id) do %>
-                <%= image_tag item.get_item_image(150,110)  %><br>
-                <%= item.name %><br>
+        <div class="col-9 offset-1">
+          <h3 class="title">"<%= @word %>"一覧（全<%= @items.total_count %>件）</h3>
+          <!--ページを超えた件数を表示するときはtotal_countを使用-->
+          <!--<div class="search-items d-flex flex-wrap">-->
+            <div class="row">
+              <% @items.each do |item| %>
+                <div class="col-3">
+                  <%= link_to item_path(item.id), class:"text-decoration-none text-dark" do %>
+                    <div class="card m-3" style="width: auto; background-color: #f7f6f5;">
+                      <%= image_tag item.get_item_image(150,110) %>
+                      <div class="card-body">
+                        <p class="card-text">
+                          <%= item.name %><br>
+                          <%= number_to_currency(item.excluding_tax_price, delimiter: ',', format: '¥ %n', precision: 0) %>
+                        </p>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
               <% end %>
-              <%= number_to_currency(item.excluding_tax_price, delimiter: ',', format: '¥ %n', precision: 0) %>
             </div>
-          <% end %>
+          <!--</div>-->
+          <div class="row justify-content-center">
+            <%= paginate @items, theme: 'page' %>
+          </div>
         </div>
-        <%= paginate @items, theme: 'page' %>
-      </div>
       <% else %>
-        <div class="col-md-8 d-flex justify-content-center">
-          <h4>商品が見つかりません。</h4>
+        <div class="col-9 offset-1 d-flex justify-content-center">
+          <h4 class="title">商品が見つかりません。</h4>
         </div>
       <% end %>
+
     <% else %>
       <% if @customers.present? %>
       <!--検索対象がcustomerのとき-->
-        <div class="col-md-8">
-          <h3>"<%= @word %>"に一致する会員一覧（全<%= @customers.count %>件）</h3>
+        <div class="col-9 offset-1">
+          <h3 class="title">"<%= @word %>"に一致する会員一覧（全<%= @customers.total_count %>件）</h3>
           <div class="search-items d-flex flex-wrap">
             <div class="search-item mr-2">
               <table class="table table-hover">
                   <tr>
-                    <th class="bg-success">会員ID</th>
-                    <th class="bg-success">氏名</th>
-                    <th class="bg-success">メールアドレス</th>
-                    <th class="bg-success">ステータス</th>
+                    <th class="table-secondary">会員ID</th>
+                    <th class="table-secondary">氏名</th>
+                    <th class="table-secondary">メールアドレス</th>
+                    <th class="table-secondary">ステータス</th>
                   </tr>
                   <% @customers.each do |customer| %>
                   <tr>
@@ -68,8 +79,8 @@
           <%= paginate @customers, theme: 'page' %>
         </div>
       <% else %>
-        <div class="cil-md-8 d-flex justify-content-center">
-          <h4>会員が見つかりません。</h4>
+        <div class="col-9 offset-1 d-flex justify-content-center">
+          <h4 class="title">会員が見つかりません。</h4>
         </div>
       <% end %>
     <% end %>
