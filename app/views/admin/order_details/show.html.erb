@@ -4,7 +4,7 @@
       <div class="col-7 text-center title">
        <span style= "font-size: 30px;"><%= @customer.last_name %><%= @customer.first_name %></span><span style= "font-size: 20px;">さんの</span><span style= "font-size: 30px;">注文履歴</span>
       </div>
-
+      <!--@orders(注文)が存在するかの判定-->
       <% if @orders.present? %>
 
      <table class="table table-hover mt-3">
@@ -18,8 +18,12 @@
 
       <% @orders.each do |order| %>
       <tr>
+        <!--注文日時を表示し、時間は東京の時間-->
         <td><%= link_to order.created_at.in_time_zone("Tokyo").strftime("%Y/%m/%d %H:%M:%S"),admin_order_path(order.id),class: "text-decoration-none" %></td>
+        <!--order(注文)に紐づいたorder_details(注文詳細)のamount（個数）の合計を表示-->
         <td><%= order.order_details.sum(:amount) %></td>
+        <!--order_status(注文ステータス)の値に応じて条件分岐-->
+        <!--enumでシンボル管理されてるのでto_symで各文字列をシンボルに変換-->
         <td>
           <% if order.order_status.to_sym == :waiting_for_payment %>
           入金待ち
@@ -38,8 +42,10 @@
      <% else %>
      <h1 class="text-center mt-5">まだ注文していません</h1>
      <% end %>
-
      </table>
+      <div class="row mx-auto justify-content-center">
+       <%= paginate @orders,theme: 'page' %>
+      </div>
     </div>
   </div>
 </div>

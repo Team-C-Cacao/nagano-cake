@@ -22,9 +22,9 @@
          <% end %>
        </td>
        <td><%= customer.email %></td>
-       <td>
+       <td><!--会員ステータスに応じて条件分岐-->
          <% if customer.is_active == true %>
-         <span class="text-info">有効</span>
+         <span style="color: #1a8066;">有効</span>
          <% else %>
          <span class="text-danger">退会</span>
          <% end %>

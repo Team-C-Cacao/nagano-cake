@@ -19,9 +19,9 @@
                   <%= image_tag cart_item.item.get_item_image(100,80) %>
            　      <strong><%= cart_item.item.name %></strong>
                 </td>
-                <td class="align-middle"><%= number_to_currency(cart_item.item.tax_included_price, unit: "", precision: 0) %></td>
+                <td class="align-middle">¥ <%= number_to_currency(cart_item.item.tax_included_price, unit: "", precision: 0) %></td>
                 <td class="align-middle"><%= cart_item.amount %></td>
-                <td class="align-middle text-right"><%= number_to_currency(cart_item.item.tax_included_price * cart_item.amount, unit: "", precision: 0) %></td>
+                <td class="align-middle text-right">¥ <%= number_to_currency(cart_item.item.tax_included_price * cart_item.amount, unit: "", precision: 0) %></td>
               </tr>
             <% end %>
           </tbody>
@@ -35,15 +35,15 @@
         <tbody>
           <tr>
             <th>送料</th>
-            <td class="text-right"><%= @order.shipping %></td>
+            <td class="text-right">¥ <%= @order.shipping %></td>
           </tr>
           <tr>
             <th>商品合計</th>
-            <td class="text-right"><%= number_to_currency(@cart_items_price, delimiter: ',', format: '%n', precision: 0) %></td>
+            <td class="text-right"><%= number_to_currency(@cart_items_price, delimiter: ',', format: '¥ %n', precision: 0) %></td>
           </tr>
           <tr>
             <th>請求額</th>
-            <td class="text-right"><%= number_to_currency(@order.total, unit: "", precision: 0) %></td>
+            <td class="text-right">¥ <%= number_to_currency(@order.total, unit: "", precision: 0) %></td>
           </tr>
         </tbody>
       </table>
