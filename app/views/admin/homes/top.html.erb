@@ -2,6 +2,7 @@
   <div class="row main-row">
     <div class="col-10">
       <h3 class="title">注文履歴一覧</h3>
+      <!--注文一覧を表示するテーブル-->
       <table class='table table-hover table-inverse'>
         <thead class="table-secondary">
           <tr>
@@ -10,12 +11,19 @@
             <th>注文個数</th>
             <th>注文ステータス</th>
           </tr>
+
+          <!--テーブル本体-->
           <tbody>
             <% @orders.each do |order| %>
             <tr>
+              <!--注文の購入日時をリンクで表示-->
               <td><%= link_to order.created_at.in_time_zone("Tokyo").strftime("%Y/%m/%d %H:%M"), admin_order_path(order.id),class: "text-decoration-none" %></td>
+              <!--注文購入者をリンクで表示-->
               <td><%= link_to order.customer.last_name + order.customer.first_name, admin_order_detail_path(order.customer.id), class: "text-decoration-none" %></td>
+              <!--注文の注文個数を表示-->
               <td><%= order.order_details.sum(:amount) %></td>
+
+              <!--注文ステータスに応じて表示を変更-->
               <td>
                 <% if order.order_status == 0 %>
                   <p>入金待ち</p>
@@ -36,6 +44,8 @@
       </table>
     </div>
   </div>
+
+  <!-- ページネーション表示 -->
   <div class="row justify-content-center">
           <%= paginate @orders, theme: 'page' %>
   </div>
