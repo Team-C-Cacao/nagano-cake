@@ -38,8 +38,10 @@
      <% else %>
      <h1 class="text-center mt-5">まだ注文していません</h1>
      <% end %>
-
      </table>
+      <div class="row mx-auto justify-content-center">
+       <%= paginate @orders,theme: 'page' %>
+      </div>
     </div>
   </div>
 </div>
