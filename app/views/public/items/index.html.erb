@@ -12,18 +12,23 @@
         <h2 class="title">商品一覧</h2>
       <% end %>
         <div class="items d-flex flex-wrap">
+          <div class="row">
             <% @items.each do |item| %>
-              <%= link_to item_path(item), class:"text-decoration-none text-dark" do %>
-                <div class="card m-3" style="width: auto; background-color: #f7f6f5;">
-                  <%= image_tag item.get_item_image(150,110) %>
-                  <div class="card-body">
-                    <p class="card-text"><%= item.name %><br>
-                      <%= number_to_currency(item.excluding_tax_price, delimiter: ',', format: '¥ %n', precision: 0) %>
-                    </p>
+              <div class="col-md-3 col-sm-6">
+                <%= link_to item_path(item), class:"text-decoration-none text-dark" do %>
+                  <div class="card m-3" style="width: auto; background-color: #f7f6f5;">
+                    <%= image_tag item.get_item_image(150,110) %>
+                    <div class="card-body">
+                      <p class="card-text">
+                        <%= item.name %><br>
+                        <%= number_to_currency(item.excluding_tax_price, delimiter: ',', format: '¥ %n', precision: 0) %>
+                      </p>
+                    </div>
                   </div>
-                </div>
-              <% end %>
+                <% end %>
+              </div>
             <% end %>
+          </div>
         </div>
         <div class="row justify-content-center">
           <%= paginate @items, theme: 'page' %>
