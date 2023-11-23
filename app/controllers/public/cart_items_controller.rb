@@ -18,7 +18,7 @@ class Public::CartItemsController < ApplicationController
   def update
     @cart_item = CartItem.find(params[:id])
     if @cart_item.update(cart_item_params)
-      redirect_to cart_items_path, notice: "#{@cart_item.item.name}の数量を#{@cart_item.amount}に更新しました。"
+      redirect_to cart_items_path, notice: "#{@cart_item.item.name}の数量を#{@cart_item.amount}個に更新しました。"
     else
       render 'cart_items/index', notice: "数量の更新に失敗しました。"
     end
