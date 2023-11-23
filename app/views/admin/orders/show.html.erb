@@ -57,11 +57,11 @@
               <!--商品名の表示-->
               <td><%= order.item.name %></td>
               <!--単価の表示-->
-              <td><%= number_to_currency(order.including_tax_price, delimiter: ',', format: '%n', precision: 0) %></td>
+              <td>¥<%= number_to_currency(order.including_tax_price, delimiter: ',', format: '%n', precision: 0) %></td>
               <!--数量の表示-->
               <td><%= order.amount %></td>
               <!--小計の表示-->
-              <td><%= number_to_currency(order.including_tax_price * order.amount, delimiter: ',', format: '%n', precision: 0) %></td>
+              <td>¥<%= number_to_currency(order.including_tax_price * order.amount, delimiter: ',', format: '%n', precision: 0) %></td>
               <td>
                 <!--制作ステータスの更新用のフォーム-->
               <%= form_with model: order, url: admin_order_detail_path(order.id), method: :patch do |f| %>
@@ -84,15 +84,15 @@
       <table class="table table-hover table-inverse">
         <tr>
           <td class="font-weight-bold">商品合計</td>
-          <td class="text-right"><%= number_to_currency(@order_detail_price, delimiter: ',', format: '%n', precision: 0) %></td>
+          <td class="text-right">¥<%= number_to_currency(@order_detail_price, delimiter: ',', format: '%n', precision: 0) %></td>
         </tr>
         <tr>
           <td class="font-weight-bold">送料</td>
-          <td class="text-right"><%= number_to_currency(@order.shipping, delimiter: ',', format: '%n', precision: 0) %></td>
+          <td class="text-right">¥<%= number_to_currency(@order.shipping, delimiter: ',', format: '%n', precision: 0) %></td>
         </tr>
         <tr>
           <td class="font-weight-bold">請求金額合計</td>
-          <td class="text-right"><%= number_to_currency(@order.total, delimiter: ',', format: '%n', precision: 0) %></td>
+          <td class="text-right">¥<%= number_to_currency(@order.total, delimiter: ',', format: '%n', precision: 0) %></td>
         </tr>
       </table>
     </div>
