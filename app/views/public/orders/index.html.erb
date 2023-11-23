@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row main-row">
-      <div class="col-10 mx-auto">
+      <div class="col-12 mx-auto">
         <h3 class="title">注文履歴一覧</h3>
         <table class="table">
           <thead class="table-warning">
@@ -23,7 +23,7 @@
                       <%= order_detail.item.name %><br>
                     <% end %>
                 </td>
-                <td><%= number_to_currency(order.total, unit: "", precision: 0) %></td>
+                <td>¥ <%= number_to_currency(order.total, unit: "", precision: 0) %></td>
                 <td><%= order.order_status_i18n %></td>
                 <td><%= link_to "表示する", order_path(order.id), class: "btn btn-info" %></td>
               </tr>
