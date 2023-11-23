@@ -38,7 +38,7 @@
   <div class="row">
     <div class="col-10">
       <table class="table table-bordered">
-        <thead>
+        <thead class="table-secondary">
           <tr>
             <th>商品名</th>
             <th>単価（税込）</th>
@@ -46,7 +46,7 @@
             <th>小計</th>
             <th>製作ステータス</th>
           </tr>
-
+        </thead>
           <% @order_details.each do |order| %>
             <tr>
               <td><%= order.item.name %></td>
@@ -61,7 +61,6 @@
               </td>
             </tr>
           <% end %>
-        </thead>
       </table>
     </div>
   </div>
