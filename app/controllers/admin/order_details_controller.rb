@@ -27,7 +27,7 @@ class Admin::OrderDetailsController < ApplicationController
   # 顧客の注文履歴表示
   def show
     @customer = Customer.find(params[:id])  #特定の顧客を取得
-    @orders = @customer.orders  #顧客に関連する注文一覧を取得
+    @orders = @customer.orders.page(params[:page]).per(10)  #顧客に関連する注文一覧を取得
   end
 
 

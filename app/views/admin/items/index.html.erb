@@ -3,8 +3,8 @@
     <div class="col-12 mx-auto">
       <h2 class="d-flex justify-content-between title">
         商品一覧
-        <%= link_to new_admin_item_path, class: "small" do %>
-          <i class="fa-solid fa-plus"></i>
+        <%= link_to new_admin_item_path do %>
+          <i class="fa-regular fa-square-plus"></i>
         <% end %>
       </h2>
       <table class="table">
@@ -26,7 +26,7 @@
               <td><%= item.genre.name %></td>
               <td>
                 <% if item.is_active %>
-                  <span class="text-info">販売中</span>
+                  <span style="color: #1a8066;">販売中</span>
                 <% else %>
                   <span class="text-danger">販売停止中</span>
                 <% end %>
@@ -36,7 +36,7 @@
         </tbody>
       </table>
       <div class="row justify-content-center">
-        <%= paginate @items %>
+        <%= paginate @items, theme: "page" %>
       </div>
     </div>
   </div>
