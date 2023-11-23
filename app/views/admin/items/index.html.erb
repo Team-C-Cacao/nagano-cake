@@ -11,6 +11,7 @@
         <thead>
           <tr class="table-secondary">
             <th>商品ID</th>
+            <th>商品画像</th>
             <th>商品名</th>
             <th>税抜価格</th>
             <th>ジャンル</th>
@@ -21,6 +22,7 @@
           <% @items.each do |item| %>
             <tr>
               <td><%= item.id %></td>
+              <td><%= image_tag item.get_item_image(50,50) %></td>
               <td><%= link_to item.name, admin_item_path(item) %></td>
               <td>¥ <%= item.excluding_tax_price %></td>
               <td><%= item.genre.name %></td>
