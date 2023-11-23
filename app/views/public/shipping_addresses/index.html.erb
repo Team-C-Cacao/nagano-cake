@@ -26,7 +26,7 @@
           </div>
           
           <div class="justify-content-end d-flex">
-          <%= f.submit :"登録" ,class: 'col-2  btn btn-success' %>
+          <%= f.submit :"登録" ,class: 'col-2  btn btn-info' %>
           </div>
         <% end %>
       </div>
@@ -40,12 +40,13 @@
     <div class="col-8">
       <table class="table table-bordered ">
         <thead class="table-warning">
-          <tr>
-            <th>郵便番号</th>
-            <th>住所</th>
-            <th>宛名</th>
-            <th colspan="2"><br></br></th>
-          </tr>
+            <tr>
+              <th>郵便番号</th>
+              <th>住所</th>
+              <th>宛名</th>
+              <th colspan="2"><br></br></th>
+            </tr>
+        </thead>
           <% @shipping_addresses.each do |shipping_address| %>
             <tr>
               <td><%= shipping_address.postal_code %></td>
@@ -53,11 +54,10 @@
               <td><%= shipping_address.name %></td>
                <td>
                 <%= link_to '削除する', shipping_address, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{shipping_address.id}" %>
-                <%= link_to "編集する", edit_shipping_address_path(shipping_address), class: "btn btn-sm btn-primary" %>
+                <%= link_to "編集する", edit_shipping_address_path(shipping_address), class: "btn btn-sm btn-success" %>
               </td>
             </tr>
           <% end %>
-        </thead>
       </table>
     </div>
   </div>
