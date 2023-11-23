@@ -2,9 +2,9 @@
   <div class="row main-row">
     <div class="col-12">
      <h4 class="col-3 text-center title"><strong>会員情報編集</strong></h4>
-
+      <!--エラーメッセージの表示-->
      <%= render "public/shared/error_messages", resource: @customer %>
-
+      <!--入力したデータをそれぞれのカラムに保存するためのフォーム-->
      <%= form_with model: @customer, url: infomation_edit_customers_path, method: :patch do |f| %>
 
       <div class="form-row">

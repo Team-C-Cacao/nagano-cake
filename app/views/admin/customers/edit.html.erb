@@ -4,7 +4,7 @@
       <div class="col-7 text-center title">
        <span style= "font-size: 30px;"><%= @user.last_name %><%= @user.first_name %></span><span style= "font-size: 20px;">さんの</span><span style= "font-size: 30px;">会員情報編集</span>
       </div>
-
+        <!--入力したデータをそれぞれのカラムに保存するためのフォーム-->
 　     <%= form_with model: @customer, url: admin_customer_path(@customer),method: :patch do |f| %>
 
 　     <%= render "public/shared/error_messages", resource: @customer %>
@@ -72,6 +72,7 @@
       <div class="form-row">
         <span class="form-group col-3">会員ステータス</span>
         <div class="form-group col-3">
+          <!--radio_buttonは選択フォーム、選択された方のデータを送る-->
           <%= f.radio_button :is_active, true,style: 'transform: scale(1.5);' %>
           <%= f.label :is_active,"有効" %>
 

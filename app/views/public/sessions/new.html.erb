@@ -3,11 +3,11 @@
     <div class="col-12 mx-auto">
      <h4 class="col-4 text-center title"><strong>ログイン</strong></h4>
       <strong class="col-3 text-center">会員の方はこちらからログイン</strong>
-
+      <!--Customerモデルに入力した情報をurl: customer_session_pathに送る-->
       <%= form_with model: @customer, url: customer_session_path do |f| %>
-
+      <!--エラーメッセージの表示-->
       <%= render "public/shared/error_messages", resource: resource %>
-
+     <!--入力したデータをそれぞれのカラムに保存-->
      <div class="form-row mt-4">
       <span class="form-group col-3">メールアドレス</span>
       <div class="form-group col-6">

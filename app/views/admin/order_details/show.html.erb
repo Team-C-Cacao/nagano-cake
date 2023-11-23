@@ -4,7 +4,7 @@
       <div class="col-7 text-center title">
        <span style= "font-size: 30px;"><%= @customer.last_name %><%= @customer.first_name %></span><span style= "font-size: 20px;">さんの</span><span style= "font-size: 30px;">注文履歴</span>
       </div>
-
+      <!--@order(注文履歴)が存在するかどうかの判定-->
       <% if @orders.present? %>
 
      <table class="table table-hover mt-3">
@@ -15,12 +15,16 @@
        <th>注文ステータス</th>
       </tr>
       </thead>
-
+      <!--@order(注文)を1つずつ取り出しorderに代入-->
       <% @orders.each do |order| %>
       <tr>
+        <!--注文日時を表示、時間は東京に設定-->
         <td><%= link_to order.created_at.in_time_zone("Tokyo").strftime("%Y/%m/%d %H:%M:%S"),admin_order_path(order.id),class: "text-decoration-none" %></td>
+        <!--1回で注文した商品の個数の合計を表示(1つのorderに紐づいたorder_detailのamountカラムの値の合計を表示)-->
         <td><%= order.order_details.sum(:amount) %></td>
         <td>
+          <!--注文ステータスをそれぞれの条件に応じて表示-->
+          <!--.to_symは文字列をシンボルに変換する。enumでシンボルで記述してるので.to_symでシンボルにする-->
           <% if order.order_status.to_sym == :waiting_for_payment %>
           入金待ち
           <% elsif order.order_status.to_sym == :payment_confirmation %>

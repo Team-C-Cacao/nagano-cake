@@ -12,7 +12,7 @@
        <th>ステータス</th>
      </tr>
      </thead>
-
+     <!--コントローラで定義した@customersのデータを1つずつ取り出し、customerに代入-->
      <% @customers.each do |customer| %>
      <tr>
        <td><%= customer.id %></td>
@@ -23,6 +23,7 @@
        </td>
        <td><%= customer.email %></td>
        <td>
+        <!--会員ステータスの値がtrueかどうかの判定-->
          <% if customer.is_active == true %>
          <span class="text-info">有効</span>
          <% else %>
@@ -32,7 +33,7 @@
      </tr>
      <% end %>
     </table>
-
+    <!--ページネーションの記述-->
     <div class="row mx-auto justify-content-center">
      <%= paginate @customers,theme: 'page' %>
     </div>
