@@ -75,6 +75,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def complete
+    @thanks = Item.where(is_active: true).order("RANDOM()").limit(3)
   end
 
   def index
