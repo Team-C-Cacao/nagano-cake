@@ -19,7 +19,7 @@
           <div class="form-group">
             <h5 class="row font-weight-bold"><%= f.label :address, "お届け先" %></h5>
               <div class="row ml-5">
-                <%= f.radio_button :address_option, 0 %>
+                <%= f.radio_button :address_option, 0, checked: true %>
                 <%= f.label :address, "ご自身の住所", class: "ml-2" %>
               </div>
               <div class="row ml-5">

@@ -6,7 +6,7 @@
     <div class="col-9 offset-1">
       <!--ジャンル検索結果-->
       <% if @genre.present? %>
-        <h2 class="title"><%= @genre.name %>一覧（全<%= @items.count %>件）</h2>
+        <h2 class="title"><%= @genre.name %>一覧（全<%= @genre.items.count %>件）</h2>
       <!--通常商品一覧-->
       <% else %>
         <h2 class="title">商品一覧</h2>
