@@ -2,7 +2,7 @@ class Admin::ItemsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @items = Item.page(params[:page]).per(10)
+    @items = Item.with_attached_image.page(params[:page]).per(10)
     @genres = Genre.all
   end
 
@@ -22,11 +22,11 @@ class Admin::ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
+    @item = Item.with_attached_image.find(params[:id])
   end
 
   def edit
-    @item = Item.find(params[:id])
+    @item = Item.with_attached_image.find(params[:id])
     @genres = Genre.all
   end
 
