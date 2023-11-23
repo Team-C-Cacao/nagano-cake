@@ -17,9 +17,9 @@ class Public::ShippingAddressesController < ApplicationController
 
   def destroy #特定の配送先情報を削除して、一覧ページにリダイレクトする
     @shipping_address = ShippingAddress.find(params[:id])
-    @shipping_address.destroy
-    flash.now[:alert] = "配送先を削除しました"
-    redirect_to shipping_addresses_path
+    @shipping_address.destroy  #配送先情報を削除
+    flash.now[:alert] = "配送先を削除しました" #フラッシュメッセージ
+    redirect_to shipping_addresses_path #配送先一覧ページにリダイレクト
   end
 
   def edit #対象となる配送先情報がデータベースから取得、それを編集するためのフォームを表示
@@ -28,17 +28,17 @@ class Public::ShippingAddressesController < ApplicationController
 
 
   def update  #特定の配送先情報を更新、表示する
-    @shipping_address = ShippingAddress.find(params[:id])
-    if @shipping_address.update(shipping_address_params)
-      redirect_to shipping_addresses_path, notice: "配達先を変更しました。"
+    @shipping_address = ShippingAddress.find(params[:id]) 
+    if @shipping_address.update(shipping_address_params) #更新が成功した場合、配送先一覧ページにリダイレクトし、成功メッセージを表示
+      redirect_to shipping_addresses_path, notice: "配達先を変更しました。" #
     else
-      render :edit
+      render :edit # 更新が失敗した場合、編集画面を表示
     end
   end
 
   private
 
-  def shipping_address_params 
+  def shipping_address_params #パラメーターの取得と許可
     params.require(:shipping_address).permit(:postal_code, :shipping_address, :name)
   end
 

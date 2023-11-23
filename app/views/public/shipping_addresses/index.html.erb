@@ -44,7 +44,7 @@
               <th>郵便番号</th>
               <th>住所</th>
               <th>宛名</th>
-              <th colspan="2"><br></br></th>
+              <th colspan="2"></th>
             </tr>
         </thead>
           <% @shipping_addresses.each do |shipping_address| %>
@@ -54,7 +54,7 @@
               <td><%= shipping_address.name %></td>
                <td>
                 <%= link_to '削除する', shipping_address, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{shipping_address.id}" %>
-                <%= link_to "編集する", edit_shipping_address_path(shipping_address), class: "btn btn-sm btn-success" %>
+                <%= link_to "編集する", edit_shipping_address_path(shipping_address), class: "ml-2 btn btn-sm btn-success" %>
               </td>
             </tr>
           <% end %>
