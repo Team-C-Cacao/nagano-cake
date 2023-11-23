@@ -7,8 +7,8 @@
       <!--ジャンル検索結果-->
       <% if @genre.present? %>
         <h2 class="title"><%= @genre.name %>一覧（全<%= @items.count %>件）</h2>
-      <% else %>
       <!--通常商品一覧-->
+      <% else %>
         <h2 class="title">商品一覧</h2>
       <% end %>
         <div class="items d-flex flex-wrap">
