@@ -10,7 +10,7 @@ class Public::ShippingAddressesController < ApplicationController
       if @shipping_address.save
         redirect_to request.referer, notice: "新規配送先を登録しました。" #リダイレクトして元々のページに戻り成功メッセージを表示
       else #失敗したら
-        @shipping_addresses = ShippingAddress.where(customer: current_customer) #
+        @shipping_addresses = ShippingAddress.where(customer: current_customer) 
         render 'index' #ビューを表示し、エラーを伝える
       end
   end
