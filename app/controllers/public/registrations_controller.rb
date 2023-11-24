@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Public::RegistrationsController < Devise::RegistrationsController
+ class Public::RegistrationsController < Devise::RegistrationsController
    #新規登録のアクションが行われる前にconfigure_sign_up_paramsメソッド実行
    before_action :configure_sign_up_params, only: [:create]
 
