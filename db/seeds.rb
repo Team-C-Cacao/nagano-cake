@@ -24,12 +24,13 @@
   Genre.create(name: "焼き菓子")
   Genre.create(name: "キャンディ")
 
-  10.times do |n|
+  32.times do |n|
     Item.create!(
       genre_id: 1,
       name: "商品#{n + 1}",
       description: "商品説明#{n + 1}",
-      excluding_tax_price: 2000
+      excluding_tax_price: rand(500..1500),
+      image: ActiveStorage::Blob.create_and_upload!(io: File.open(Rails.root.join("app/assets/images/item#{n + 1}.jpeg")), filename: "item#{n + 1}.jpeg")
       )
   end
 
