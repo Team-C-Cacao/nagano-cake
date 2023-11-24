@@ -6,8 +6,13 @@ class Admin::GenresController < ApplicationController
 
   def create
     @genre = Genre.new(genre_params) #genre新規登録データ取得
-    @genre.save #保存
-    redirect_to admin_genres_path #genre一覧に戻る
+    if @genre.save #保存
+      redirect_to admin_genres_path #genre一覧に戻る
+    else
+      @genres = Genre.all
+      flash.now[:alert] = "ジャンル名が入力されていません。"
+      render 'index'
+    end
   end
 
   def edit
@@ -16,8 +21,12 @@ class Admin::GenresController < ApplicationController
 
   def update
     @genre = Genre.find(params[:id]) #更新したいgenreのデータ取得
-    @genre.update(genre_params) #対象データ更新
-    redirect_to admin_genres_path #genre一覧に戻る
+    if @genre.update(genre_params) #対象データ更新
+      redirect_to admin_genres_path #genre一覧に戻る
+    else
+      flash.now[:alert] = "ジャンル名が入力されていません。"
+      render 'edit'
+    end
   end
 
   private

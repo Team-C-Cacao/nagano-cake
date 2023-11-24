@@ -2,6 +2,7 @@
   <div class="row main-row">
     <div class="col-12 mx-auto">
       <h2 class="title d-flex fustify-content-start mb-5 form-horizontal">注文情報入力</h2>
+
         <%= form_with model: @order, url: confirm_orders_path, method: :post do |f|  %>
 
           <div class="form-group">
@@ -37,7 +38,7 @@
                 <%= f.label :address, "登録済住所から選択", class: "ml-2" %>
               </div>
               <div class="row ml-5">
-                <%= f.collection_select(:address_id, @shipping_addresses, :id, :full_shipping_address, prompt: "選択してください") %>
+                <%= f.collection_select(:address_id, @shipping_addresses || [], :id, :full_shipping_address, prompt: "選択してください") %>
                 <!--f.collection_select(メソッド名, オブジェクトの配列, value属性の項目, テキストの項目 [, オプション or HTML属性 or イベント属性])-->
               </div>
           </div>

@@ -29,18 +29,31 @@ class Public::OrdersController < ApplicationController
 
       # 登録済住所から選択であれば
     elsif params[:order][:address_option] == "1"
-      ship = ShippingAddress.find(params[:order][:address_id])
-      @order.postal_code = ship.postal_code
-      @order.address = ship.shipping_address
-      @order.name = ship.name
+      if ship = ShippingAddress.find_by(id: params[:order][:address_id])
+        @order.postal_code = ship.postal_code
+        @order.address = ship.shipping_address
+        @order.name = ship.name
+      else
+        flash.now[:alert] = "お届け先の住所が選択されていません。"
+        @shipping_addresses = current_customer.shipping_addresses.all
+        render 'new'
+      end
 
       # 新規住所入力であれば
-    elsif params[:order][:address_option] = "2"
+    elsif params[:order][:address_option] == "2"
+      if params[:order][:postal_code].blank? || params[:order][:address].blank? || params[:order][:name].blank?
+      flash.now[:alert] = "新しいお届け先が入力されていません。"
+      render 'new'
+      end
+
       @order.postal_code = params[:order][:postal_code]
       @order.address = params[:order][:address]
       @order.name = params[:order][:name]
+
     else
+      flash.now[:alert] = "不正な操作が行われました。"
       render 'new'
+
     end
 
   end
@@ -65,7 +78,9 @@ class Public::OrdersController < ApplicationController
       end #ループ終わり
       redirect_to complete_orders_path #注文完了画面へ遷移
     else
-      render :cart_items, alert: "注文に失敗しました" #ショッピングカートへ戻る
+      @cart_items = CartItem.where(customer_id: current_customer.id)
+      @total_price = @cart_items.sum(&:subtotal)
+      render 'cart_items/index', alert: "注文に失敗しました" #ショッピングカートへ戻る
     end
 
     #61行目のtax_included_priceはcart_itemモデルで定義されている
