@@ -17,6 +17,7 @@ class Admin::ItemsController < ApplicationController
       flash[:notice] = "商品が登録できました"
       redirect_to admin_item_path(@item)
     else
+      @genres = Genre.all
       render :new
     end
   end
@@ -35,6 +36,7 @@ class Admin::ItemsController < ApplicationController
     if @item.update(item_params)
       redirect_to admin_item_path(@item)
     else
+      @genres = Genre.all
       render :edit
     end
   end

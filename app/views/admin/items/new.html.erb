@@ -2,6 +2,7 @@
   <div class="row main-row">
     <div class="col-10 mx-auto">
       <h2 class="d-flex fustify-content-start title">商品新規登録</h2>
+      <%= render "admin/shared/error_messages", resource: @item %>
       <%= form_with model: @item, url: admin_items_path, html: {class: 'form-horizontal'} do |f| %>
         <div class="form-group row">
           <div class="col-3">

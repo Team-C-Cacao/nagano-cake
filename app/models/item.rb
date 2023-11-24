@@ -7,6 +7,11 @@ class Item < ApplicationRecord
 
   has_one_attached :image
 
+  validates :name, presence: true
+  validates :description, presence: true
+  validates :excluding_tax_price, presence: true
+  validates :genre_id, presence: true
+
   # ビュー側でサイズ指定
   # イメージがないときにno_image.jpgの表示
   def get_item_image(width, height)

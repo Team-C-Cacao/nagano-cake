@@ -55,6 +55,18 @@ ja:
               blank: "住所を入力してください"
             postal_code:
               blank: "郵便番号を入力してください"
+        item:
+          attributes:
+            name:
+              blank: "商品名を入力してください"
+            description:
+              blank: "商品説明を入力してください"
+            genre_id:
+              blank: "ジャンルを選択してください"
+            excluding_tax_price:
+              blank: "税抜価格を入力してください"
+
+
 
   date:
     abbr_day_names:
