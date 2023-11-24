@@ -10,7 +10,8 @@ class Public::ShippingAddressesController < ApplicationController
       if @shipping_address.save
         redirect_to request.referer, notice: "新規配送先を登録しました。" #リダイレクトして元々のページに戻り成功メッセージを表示
       else #失敗したら
-        @shipping_addresses = ShippingAddress.where(customer: current_customer) 
+        flash.now[:alert] = "配送先を入力してください"
+        @shipping_addresses = ShippingAddress.where(customer: current_customer)
         render 'index' #ビューを表示し、エラーを伝える
       end
   end
@@ -28,10 +29,11 @@ class Public::ShippingAddressesController < ApplicationController
 
 
   def update  #特定の配送先情報を更新、表示する
-    @shipping_address = ShippingAddress.find(params[:id]) 
+    @shipping_address = ShippingAddress.find(params[:id])
     if @shipping_address.update(shipping_address_params) #更新が成功した場合、配送先一覧ページにリダイレクトし、成功メッセージを表示
       redirect_to shipping_addresses_path, notice: "配達先を変更しました。" #
     else
+      flash.now[:alert] = "配送先を入力してください"
       render :edit # 更新が失敗した場合、編集画面を表示
     end
   end
