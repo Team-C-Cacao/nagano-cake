@@ -13,9 +13,15 @@ class Public::SessionsController < Devise::SessionsController
   end
 
   def destroy
+   # Devise.sign_out_all_scopesとはdeviseでサインアウトするときに複数のスコープ(管理者、顧客)が存在する場合、すべてのスコープからサインアウトするかどうかを制御する設定
+   # Devise.sign_out_all_scopesがtrueなら全てのスコープからサインアウトする、falseなら特定のスコープからのみサインアウトが行われる
+   # この設定は、config/initializers/devise.rb などでカスタマイズできる
+   # Devise.sign_out_all_scopes の値に基づいて sign_out を実行するかどうかを条件付きで設定する
     signed_out = (Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name))
+    # signed_outがtrueの時:alertメッセージ :signed_out をflashに設定する
+    # set_flash_message! メソッドはDeviseのヘルパーメソッドで、flashメッセージを設定するために使用される
     set_flash_message! :alert, :signed_out if signed_out
-    yield if block_given?
+    # サインアウトが完了した後の処理
     respond_to_on_destroy
   end
 
