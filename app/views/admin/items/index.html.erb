@@ -23,7 +23,11 @@
               <td><%= item.id %></td>
               <td><%= link_to item.name, admin_item_path(item) %></td>
               <td>¥ <%= item.excluding_tax_price %></td>
+              <% if item.genre.present? %>
               <td><%= item.genre.name %></td>
+              <% else %>
+              <td>未設定</td>
+              <% end %>
               <td>
                 <% if item.is_active %>
                   <span style="color: #1a8066;">販売中</span>
