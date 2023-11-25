@@ -25,13 +25,13 @@
 
               <!--注文ステータスに応じて表示を変更-->
               <td>
-                <% if order.order_status == 0 %>
+                <% if order.order_status == "waiting_for_payment" %>
                   <p>入金待ち</p>
-                <% elsif order.order_status == 1 %>
+                <% elsif order.order_status == "payment_confirmation" %>
                   <p>入金確認</p>
-                <% elsif order.order_status == 2 %>
+                <% elsif order.order_status == "in_production" %>
                   <p>制作中</p>
-                <% elsif order.order_status == 3 %>
+                <% elsif order.order_status == "preparation_for_shipping" %>
                    <p>発送準備</p>
                 <% else %>
                   <p>発送済み</p>
