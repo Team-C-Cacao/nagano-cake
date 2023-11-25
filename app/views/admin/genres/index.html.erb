@@ -30,6 +30,7 @@
           <tr>
             <th>ジャンル</th>
             <th></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -41,6 +42,7 @@
                   <button type="button" class="btn btn-success">編集する</button>
                 <% end %>
               </td>
+              <td><%= link_to '削除する', admin_genre_path(genre), method: :delete, class: "btn btn-danger", data: { confirm: "#{genre.name}を削除しますか？" } %></td>
              </tr>
           <%end%>
         </tbody>

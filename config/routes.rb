@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:show, :update]
     resources :order_details, only: [:show,:update]
     resources :customers, only: [:index, :show, :edit, :update]
-    resources :genres, only: [:index, :create, :edit, :update]
+    resources :genres, only: [:index, :create, :edit, :update, :destroy] #便宜上追加
     resources :items, except: [:destroy]
   end
 
