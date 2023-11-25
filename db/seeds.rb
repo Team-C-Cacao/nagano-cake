@@ -38,3 +38,42 @@
     email: "admin@admin.com",
     password: "123456"
   )
+
+  Customer.all.each do |customer|
+    num_items = rand(1..5)
+    item_ids = (1..32).to_a.sample(num_items)
+
+    item_ids.each do |item_id|
+      CartItem.create!(
+        customer_id: customer.id,
+        item_id: item_id,
+        amount: rand(1..5)
+      )
+    end
+
+    total_price = customer.cart_items.sum do |cart_item|
+      cart_item.item.excluding_tax_price * cart_item.amount * 1.1
+    end.round
+
+    order = Order.create!(
+      customer_id: customer.id,
+      payment_method: rand(0..1),
+      name: "DMM WEBCAMP(新宿校)",
+      postal_code: "1600022",
+      address: "東京都新宿区新宿２丁目５−１０ 成信ビル 4階",
+      total: total_price
+    )
+
+    customer.cart_items.each do |cart_item|
+      OrderDetail.create!(
+        order_id: order.id,
+        item_id: cart_item.item_id,
+        amount: cart_item.amount,
+        including_tax_price: cart_item.item.excluding_tax_price * 1.1,
+        making_status: 0
+      )
+    end
+
+    customer.cart_items.destroy_all
+  end
+
