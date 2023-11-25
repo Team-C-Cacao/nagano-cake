@@ -28,7 +28,11 @@
             <p class="font-weight-bold">ジャンル</p>
           </div>
           <div class="col-8">
+            <% if @item.genre.present? %>
             <%= @item.genre.name %>
+            <% else %>
+            <p>未設定</p>
+            <% end %>
           </div>
         </div>
         <div class="form-group row">
