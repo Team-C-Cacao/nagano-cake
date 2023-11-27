@@ -6,7 +6,7 @@ class Admin::OrdersController < ApplicationController
     #ary は計算された金額を格納するための配列
     #order_detail.including_tax_price * order_detail.amount 特定の order_detail の金額合計（税込み価格 * 個数）
     #注文ステータスの更新
-     ary = []
+    ary = []
     @order_details.each do |order_detail|
       ary << order_detail.including_tax_price * order_detail.amount #各注文詳細の価格 個数を計算して合計金額を求める
     end

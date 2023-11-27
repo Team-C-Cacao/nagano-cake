@@ -14,10 +14,10 @@ class Public::CustomersController < ApplicationController
     @customer = current_customer#@customerにログインしてるcustomer情報を代入
     if @customer.update(customer_params)#customer情報をupdateできたなら
       flash[:notice] = "登録情報を編集しました"
-       redirect_to customers_path
+      redirect_to customers_path
     else
       flash.now[:alert] = "登録情報の編集に失敗しました"#customer情報をupdateできなかったなら
-       render :edit
+      render :edit
     end
   end
 
